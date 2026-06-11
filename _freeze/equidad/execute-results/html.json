@@ -1,0 +1,19 @@
+{
+  "hash": "2327496aaf5ccad6ed9ce60a2ecda391",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"5 · Equidad\"\nsubtitle: \"¿La brecha es más profunda para algunos grupos?\"\n---\n\n\n\n::: {.ensimple}\nMiramos dos ejes independientes: si la brecha es peor para las personas **más pobres**, y para los **pueblos originarios** y **migrantes**. La inequidad más clara y robusta es la **territorial** (rural); los otros ejes matizan.\n:::\n\n## Eje pobreza (tramo A de FONASA = indigencia)\n\n\n::: {.cell}\n\n```{.r .cell-code}\nif (!is.null(pob)) {\n  pt <- pob[, .(`Comunas (de - a + pobres)` = cuartil_pobreza,\n                `Indigencia media %` = tramo_a_medio,\n                `Tasa detección %` = round(100*tasa_deteccion,1),\n                `Brecha %` = round(100*brecha,1))]\n  knitr::kable(pt, align = \"lrrr\")\n}\n```\n\n::: {.cell-output-display}\n\n\n|Comunas (de - a + pobres) | Indigencia media %| Tasa detección %| Brecha %|\n|:-------------------------|------------------:|----------------:|--------:|\n|Q1 menos pobre            |               11.0|              6.4|     93.6|\n|Q2                        |               16.5|              7.1|     92.9|\n|Q3                        |               19.5|              6.3|     93.7|\n|Q4 más pobre              |               26.7|              4.7|     95.3|\n\n\n:::\n:::\n\n\nNo hay una línea recta entre pobreza y detección (la correlación es prácticamente **cero**). Pero el **cuartil más pobre detecta claramente peor** (4,7 % vs 6-7 %). Como esas comunas tienden a ser **rurales**, esto es probablemente el **mismo efecto rural** —no un efecto independiente de la pobreza.\n\n## Eje pueblos originarios y migrantes\n\n\n::: {.cell}\n\n```{.r .cell-code}\nif (!is.null(ori)) {\n  ot <- ori[, .(Zona = zona, `Bajo control` = bajo_control,\n                `% pueblos originarios` = pct_pueblos_orig, `% migrantes` = pct_migrantes)]\n  knitr::kable(ot, align = \"lrrr\", format.args = list(big.mark = \".\"))\n}\n```\n\n::: {.cell-output-display}\n\n\n|Zona   | Bajo control| % pueblos originarios| % migrantes|\n|:------|------------:|---------------------:|-----------:|\n|PAIS   |       14.514|                  2.42|        0.58|\n|mixto  |        2.065|                  2.28|        0.05|\n|rural  |        1.710|                  6.67|        0.12|\n|urbano |        3.776|                  1.59|        0.93|\n\n\n:::\n:::\n\n\nEntre las personas con demencia bajo control, **2,4 %** son de pueblos originarios a nivel país, con patrón territorial: **6,7 % en zonas rurales** (donde vive más población originaria) vs 1,6 % urbano. Los **migrantes** son apenas **0,6 %**.\n\n::: {.implica}\nEl 2,4 % nacional **parece bajo** frente al peso poblacional de los pueblos originarios (~13 %), lo que **sugiere posible subdetección** — pero es una **hipótesis**: para confirmarla hace falta el denominador poblacional comunal (Censo 2024). Es la línea de trabajo a seguir en el eje de equidad étnica.\n:::\n\n::: {.caveat}\nLas columnas de pueblos originarios y migrantes son **marginales independientes**: no se cruzan entre sí ni con edad/sexo, y la autoidentificación está subregistrada. El eje **migrante** es poco informativo para demencia (la migración es joven; la demencia, de 65+).\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

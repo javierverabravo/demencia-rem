@@ -1,0 +1,21 @@
+{
+  "hash": "cc4ebd6f49649fb8f701beab866ff39e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"2 · Cascada de atención\"\nsubtitle: \"¿Se puede seguir a las personas desde la sospecha hasta el cuidado?\"\n---\n\n\n\n::: {.ensimple}\nLo ideal sería seguir el camino: alguien **sospecha** demencia → se **diagnostica** → **ingresa** a un programa → queda **bajo control** → si avanza, recibe **cuidado en casa**. Pero el dato **no permite seguir ese camino**: cada paso vive en un registro distinto y los números no calzan.\n:::\n\n## Las cinco etapas (país)\n\n\n::: {.cell}\n\n```{.r .cell-code}\nif (!is.null(cas)) {\n  ct <- cas[, .(Etapa = etapa, País = PAIS, Urbano = urbano, Rural = rural, Mixto = mixto)]\n  knitr::kable(ct, align = \"lrrrr\", format.args = list(big.mark = \".\"))\n}\n```\n\n::: {.cell-output-display}\n\n\n|Etapa                                                  |   País| Urbano| Rural| Mixto|\n|:------------------------------------------------------|------:|------:|-----:|-----:|\n|1. Sospecha (A06 consultorías)                         |    325|     57|    89|    49|\n|2. Diagnóstico (A06 consultorías)                      |    467|     98|   114|    72|\n|3. Ingreso SM (A05, flujo anual)                       | 15.117|  3.645| 1.243| 2.390|\n|4. Bajo control (P6, stock dic)                        | 14.514|  3.776| 1.710| 2.065|\n|5. Domiciliaria dep. severa c/demencia (P3, stock dic) | 23.209|  5.177| 3.009| 4.461|\n\n\n:::\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nif (!is.null(cas)) {\n  g <- cas[order(etapa_orden), .(etapa, PAIS)]\n  g[, etapa := factor(etapa, levels = rev(etapa))]\n  ggplot(g, aes(PAIS, etapa)) +\n    geom_col(fill = COL_PRIMARY, alpha = .85, width = .65) +\n    geom_text(aes(label = formatC(PAIS, format=\"d\", big.mark=\".\")), hjust = -0.1) +\n    scale_x_continuous(expand = expansion(c(0,.2))) +\n    labs(x = \"Personas / registros\", y = NULL) + theme_rem()\n}\n```\n\n::: {.cell-output-display}\n![Magnitud de cada etapa (país). No es un embudo: las etapas no descienden de mayor a menor.](cascada_files/figure-html/grafico-1.png){width=768}\n:::\n:::\n\n\n## El hallazgo: los registros no forman un embudo\n\nSi fuera un embudo, cada paso debería ser **menor** que el anterior. No lo es: la **sospecha y el diagnóstico formales son minúsculos** (325 y 467 en todo el país) frente a 15 mil ingresos y 14 mil bajo control, y el cuidado domiciliario (23 mil) **supera** al bajo control de salud mental.\n\n¿Por qué? Porque cada etapa **mide algo distinto**: la sospecha es una columna marginal de consultorías (muy subutilizada); el ingreso es un **flujo anual**; el bajo control, un **stock**; lo domiciliario, un registro de **dependencia severa** que capta casos avanzados. No son una misma cohorte seguida en el tiempo.\n\n::: {.implica}\nDos cosas accionables: (1) para **monitorear la ruta** de la demencia hay que **fortalecer el registro de sospecha y diagnóstico** en atención primaria, hoy casi inexistente; (2) que lo **domiciliario supere al bajo control** sugiere que muchas personas se hacen visibles **solo cuando ya hay dependencia severa** — una detección **tardía**.\n:::\n\n::: {.caveat}\nResultado de carácter **limitante** (de los valiosos de declarar): el REM, tal como está, **no permite reconstruir la ruta de atención** de la demencia. Etapas en unidades distintas (flujo vs stock) y poblaciones distintas; no son trayectorias individuales.\n:::\n",
+    "supporting": [
+      "cascada_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

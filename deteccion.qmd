@@ -1,0 +1,60 @@
+---
+title: "1 · Brecha de detección"
+subtitle: "¿Cuánta demencia esperada está bajo control en la red pública?"
+---
+
+```{r setup}
+#| include: false
+source(here::here("R", "_dashboard.R"))
+res <- leer_prod("deteccion_resumen.csv"); pais <- res[grupo=="PAIS"]
+bre <- leer_prod("brecha_comuna.csv")
+```
+
+::: {.ensimple}
+La demencia tiene una frecuencia conocida por edad, así que se puede estimar cuántas personas mayores con demencia se **esperan** en cada comuna. De todas ellas, solo cerca de **1 de cada 16** está bajo control en la salud mental pública. La diferencia —la **brecha**— es del **`r pct(pais$brecha,1)`**.
+:::
+
+## La cuenta, en una resta
+
+```
+Brecha = 1 − ( personas bajo control / personas esperadas )
+       = 1 − ( 13.114 / 205.843 )  ≈  93,7 %
+```
+
+- **Numerador:** `r mil(bre[esperados>0, sum(bajo_control_65)])` personas de 65+ bajo control SM por demencia (corte diciembre, atención primaria + especialidad).
+- **Denominador:** demencia esperada en la **población pública** (FONASA), 205.843 personas. Usar la población pública —y no la total— evita contar a quienes están en isapres y nunca usan la red pública.
+
+## Por qué el denominador correcto importa
+
+```{r denom}
+d <- data.table(
+  Denominador = c("Población total (INE)", "Población pública (FONASA)"),
+  `Esperados 65+` = c(244338, 205843),
+  `Tasa detección` = c("5,4 %", "6,3 %"),
+  Brecha = c("94,6 %", "93,7 %"))
+knitr::kable(d, align = "lrrr")
+```
+
+Al limpiar el denominador no solo se corrige la cifra (de 94,6 % a 93,7 %): también se vuelve **justa** la comparación entre territorios y **emerge la señal territorial** (ver [¿Dónde vive la variación?](variacion.qmd) y [Territorio](territorio.qmd)).
+
+## Distribución de la detección entre comunas
+
+```{r hist}
+#| fig-cap: "Distribución de la tasa de detección comunal (recortada a 30 % para legibilidad)."
+b <- bre[esperados > 0 & tasa_deteccion <= 0.30]
+ggplot(b, aes(tasa_deteccion)) +
+  geom_histogram(bins = 30, fill = COL_PRIMARY, alpha = .85) +
+  geom_vline(xintercept = pais$tasa_deteccion, color = COL_ALERT, linewidth = 1, linetype = 2) +
+  annotate("text", x = pais$tasa_deteccion, y = Inf, vjust = 1.5, hjust = -0.05,
+           label = "país", color = COL_ALERT) +
+  scale_x_continuous(labels = scales::percent) +
+  labs(x = "Tasa de detección comunal", y = "Nº de comunas") + theme_rem()
+```
+
+::: {.implica}
+La brecha del 93,7 % marca un **punto de partida medible**, recalculable cada año con el mismo código. Las palancas que el análisis respalda: **priorizar lo rural** y **extender los dispositivos del Plan Nacional de Demencia**, que se asocian a mayor detección.
+:::
+
+::: {.caveat}
+El numerador es **bajo control de salud mental**, no toda la atención de demencia. La brecha mide la visibilidad de ese subsistema, no demencia sin ningún contacto. Detalle en [Robustez](robustez.qmd) y en la *Fundamentación estadística* (PDF).
+:::

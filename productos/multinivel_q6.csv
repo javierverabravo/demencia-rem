@@ -1,0 +1,7 @@
+modelo,nivel,varianza,vpc_pct,MOR,converge
+region/comuna/establecimiento,region.(Intercept),1.331,8.4,3.01,TRUE
+region/comuna/establecimiento,comuna.(Intercept),2.795,17.6,4.93,TRUE
+region/comuna/establecimiento,id.(Intercept),8.435,53.2,15.96,TRUE
+servicioSalud/comuna/establecimiento,ss.(Intercept),2.255,13.5,4.19,TRUE
+servicioSalud/comuna/establecimiento,comuna.(Intercept),2.734,16.4,4.84,TRUE
+servicioSalud/comuna/establecimiento,id.(Intercept),8.423,50.4,15.93,TRUE

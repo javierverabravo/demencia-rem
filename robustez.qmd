@@ -1,0 +1,46 @@
+---
+title: "Robustez y límites"
+subtitle: "Convergencia de los modelos, supuestos y qué NO afirma este análisis"
+---
+
+```{r setup}
+#| include: false
+source(here::here("R", "_dashboard.R"))
+est <- leer_prod("modelo_estado.csv")
+```
+
+## Estado de los modelos (convergencia)
+
+Un modelo que no converge no es un modelo. Estado registrado:
+
+```{r estado}
+if (!is.null(est)) knitr::kable(est, align = "ll") else cat("> Sin modelo_estado.csv.")
+```
+
+Los modelos multinivel (Q6) y el análisis espacial (Q1) **convergieron / se ejecutaron correctamente**, lo que habilita interpretar sus cifras.
+
+## Caveats que se declaran siempre
+
+- **El numerador es bajo control de salud mental** (`P6`), no toda la atención de demencia. La brecha mide la visibilidad de ese subsistema, no demencia sin ningún contacto.
+- **Subregistro rural**: parte del gradiente urbano/rural es falta de registro, no solo falta de detección real (ambas son problemas).
+- **Denominador con incertidumbre**: prevalencia 10/66, proyecciones INE base 2017 (pre-Censo 2024), cobertura FONASA en tramos de 10 años.
+- **Análisis ecológico + MAUP**: las tasas comunales no se interpretan a nivel de personas; en comunas chicas la tasa es inestable.
+- **Multinivel en escala latente** (convención π²/3), por eso se reporta junto al MOR, que no depende de ese supuesto. Modelo no condicionado: dice *dónde* vive la variación, no *por qué*.
+- **Cascada (Q2)**: las etapas no anidan (registros con lógicas distintas); no es una cohorte.
+- **Equidad (Q5)**: marginales independientes (sin cruces); eje de pueblos originarios pendiente del denominador censal; eje migrante subpotenciado.
+
+## Reproducibilidad
+
+Todo el análisis se regenera con:
+
+```r
+source("R/10_run_all.R")   # 00 datos → 01 diagnóstico → 01b panel → 03 denominadores
+                           # → 06 detección → 07 cascada → 08 equidad → 09 multinivel
+quarto::quarto_render()    # este sitio (lee solo productos/)
+```
+
+El detalle metodológico completo —de dónde sale cada cifra y por qué significa lo que decimos, por capas para tres públicos— está en la **Fundamentación estadística** (`FUNDAMENTACION_ESTADISTICA.pdf`).
+
+::: {.caveat}
+Datos REM preliminares (DEIS-MINSAL actualiza sin aviso el año en curso y el anterior). Fecha de los datos: abril 2026. Fuentes externas: INE (proyecciones, Censo 2017 urbano/rural), FONASA (inscritos APS), estudio 10/66 (prevalencia).
+:::

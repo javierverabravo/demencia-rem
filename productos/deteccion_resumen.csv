@@ -1,0 +1,5 @@
+grupo,tasa_deteccion,brecha
+PAIS,0.063,0.937
+mixto,0.044,0.956
+rural,0.049,0.951
+urbano,0.085,0.915

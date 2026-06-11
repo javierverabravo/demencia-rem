@@ -1,0 +1,60 @@
+project:
+  type: website
+  output-dir: docs          # GitHub Pages publica desde /docs
+  render:
+    - "*.qmd"
+    - "!articulo.qmd"       # informe PDF aparte; no entra al sitio web
+
+website:
+  title: "Demencia en la red pública"
+  description: "Brecha de detección de demencia en personas mayores (65+), con mirada territorial. Series REM Chile."
+  page-navigation: true
+  reader-mode: true
+  navbar:
+    background: primary
+    left:
+      - text: "Resumen"
+        file: index.qmd
+      - text: "Cómo leer esto"
+        file: metodologia.qmd
+      - text: "Glosario"
+        file: glosario.qmd
+      - text: "Territorio"
+        file: territorio.qmd
+      - text: "Las preguntas"
+        menu:
+          - text: "1 · Brecha de detección"
+            file: deteccion.qmd
+          - text: "2 · Cascada de atención"
+            file: cascada.qmd
+          - text: "5 · Equidad"
+            file: equidad.qmd
+          - text: "6 · ¿Dónde vive la variación?"
+            file: variacion.qmd
+      - text: "Robustez"
+        file: robustez.qmd
+  page-footer:
+    left: "Datos REM (DEIS-MINSAL), preliminares 2025. Denominadores INE + FONASA. Proyecto reproducible."
+    right: "Junio 2026"
+
+format:
+  html:
+    theme: [cosmo, custom.scss]
+    toc: true
+    toc-title: "En esta página"
+    code-fold: true
+    code-tools: false
+    code-summary: "ver código"
+    lang: es
+    fig-width: 8
+    fig-height: 5
+    df-print: paged
+    smooth-scroll: true
+
+execute:
+  echo: true
+  warning: false
+  message: false
+  freeze: auto      # no re-ejecuta si no cambió el .qmd
+
+# Regla de oro: el dashboard SOLO lee tablas de productos/.

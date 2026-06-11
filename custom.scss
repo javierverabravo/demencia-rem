@@ -1,0 +1,36 @@
+/*-- scss:defaults --*/
+$primary:   #2C5F7C;   // azul sobrio; el color fuerte se reserva para el mapa
+$body-color: #1f2933;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+$toc-color: #52616b;
+
+/*-- scss:rules --*/
+// Glosario con doble definición
+.glosario dt { font-weight: 700; color: #2C5F7C; margin-top: .8rem; }
+.glosario dd { margin-bottom: .4rem; color: #3a4750; }
+
+// Cajas pedagógicas: "En simple" y "Qué implica"
+.callout-simple, .ensimple {
+  background: #eef5f9; border-left: 4px solid #2C5F7C;
+  padding: .8rem 1rem; border-radius: 4px; margin: 1rem 0;
+}
+.ensimple::before { content: "En simple — "; font-weight: 700; color: #2C5F7C; }
+.implica {
+  background: #fbf3e7; border-left: 4px solid #c98a2b;
+  padding: .8rem 1rem; border-radius: 4px; margin: 1rem 0;
+}
+.implica::before { content: "Qué implica — "; font-weight: 700; color: #b3791f; }
+
+// Value boxes del resumen
+.kpi-grid { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
+.kpi {
+  flex: 1 1 180px; background: #fff; border: 1px solid #e3e8ec;
+  border-top: 4px solid #2C5F7C; border-radius: 6px; padding: 1rem 1.2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.kpi .num { font-size: 2.1rem; font-weight: 800; color: #2C5F7C; line-height: 1; }
+.kpi .lab { font-size: .85rem; color: #52616b; margin-top: .4rem; }
+.kpi.alert { border-top-color: #b3431f; }
+.kpi.alert .num { color: #b3431f; }
+
+.caveat { font-size: .9rem; color: #6b7680; border-top: 1px dashed #cdd6dc; padding-top: .6rem; }

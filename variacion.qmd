@@ -1,0 +1,53 @@
+---
+title: "6 · ¿Dónde vive la variación?"
+subtitle: "¿Del centro, de la comuna o de la región depende que la demencia quede registrada?"
+---
+
+```{r setup}
+#| include: false
+source(here::here("R", "_dashboard.R"))
+mn <- leer_prod("multinivel_q6.csv")
+```
+
+::: {.ensimple}
+¿De qué depende que un centro registre la demencia: del **centro** concreto, de la **comuna** o de la **región**? Lo medimos con un modelo de tres niveles. La respuesta: depende **sobre todo del centro** al que te toca ir. Es, en buena parte, una *lotería de establecimiento*.
+:::
+
+## Cuánto explica cada nivel
+
+```{r vpc}
+#| fig-cap: "Partición de la varianza (VPC): qué porción de por qué unos centros registran y otros no vive en cada nivel. Modelo principal."
+if (!is.null(mn)) {
+  pm <- mn[modelo == "region/comuna/establecimiento"]
+  pm[, nivel2 := fcase(grepl("^id", nivel), "Establecimiento",
+                       grepl("^comuna", nivel), "Comuna",
+                       grepl("^region", nivel), "Región", default = nivel)]
+  pm[, nivel2 := factor(nivel2, levels = c("Región","Comuna","Establecimiento"))]
+  ggplot(pm, aes(vpc_pct, nivel2)) +
+    geom_col(fill = COL_PRIMARY, alpha = .85, width = .6) +
+    geom_text(aes(label = paste0(vpc_pct, " %")), hjust = -0.1, fontface = "bold") +
+    scale_x_continuous(expand = expansion(c(0,.18))) +
+    labs(x = "% de la varianza explicada", y = NULL) + theme_rem()
+}
+```
+
+```{r tabla}
+if (!is.null(mn)) {
+  tt <- mn[, .(Modelo = modelo, Nivel = nivel, `VPC %` = vpc_pct, MOR = MOR)]
+  knitr::kable(tt, align = "llrr")
+}
+```
+
+## Cómo leerlo
+
+- El **establecimiento explica el 53 %** de la variación, con un **MOR de ~16**: si mandas al mismo paciente a dos centros al azar de la misma comuna, sus probabilidades de quedar registrado difieren, en la mediana, **16 veces**.
+- El **territorio importa, pero menos**: comuna (17,6 %) + región (8,4 %) ≈ **26 %**.
+- La **red administrativa pesa más que la geografía**: el **Servicio de Salud** explica 13,5 %, más que la región (8,4 %).
+
+::: {.implica}
+La palanca de mayor rendimiento es **centro a centro**: registro, capacitación, sistemas de información y supervisión por establecimiento. Las campañas puramente **regionales** rinden poco; el **Servicio de Salud** sí es una unidad de gestión con tracción. En síntesis: **gestión de establecimientos coordinada por Servicio de Salud**.
+:::
+
+::: {.caveat}
+Mide **visibilidad administrativa** (registro), no calidad clínica. Modelo logístico vacío de 3 niveles; VPC en escala latente (por eso se acompaña del MOR). Ambos modelos **convergieron** (ver [Robustez](robustez.qmd)). Detalle en la *Fundamentación estadística* (PDF).
+:::

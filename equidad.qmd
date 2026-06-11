@@ -1,0 +1,49 @@
+---
+title: "5 · Equidad"
+subtitle: "¿La brecha es más profunda para algunos grupos?"
+---
+
+```{r setup}
+#| include: false
+source(here::here("R", "_dashboard.R"))
+pob <- leer_prod("equidad_pobreza.csv")
+ori <- leer_prod("equidad_origen.csv")
+```
+
+::: {.ensimple}
+Miramos dos ejes independientes: si la brecha es peor para las personas **más pobres**, y para los **pueblos originarios** y **migrantes**. La inequidad más clara y robusta es la **territorial** (rural); los otros ejes matizan.
+:::
+
+## Eje pobreza (tramo A de FONASA = indigencia)
+
+```{r pobreza}
+if (!is.null(pob)) {
+  pt <- pob[, .(`Comunas (de - a + pobres)` = cuartil_pobreza,
+                `Indigencia media %` = tramo_a_medio,
+                `Tasa detección %` = round(100*tasa_deteccion,1),
+                `Brecha %` = round(100*brecha,1))]
+  knitr::kable(pt, align = "lrrr")
+}
+```
+
+No hay una línea recta entre pobreza y detección (la correlación es prácticamente **cero**). Pero el **cuartil más pobre detecta claramente peor** (4,7 % vs 6-7 %). Como esas comunas tienden a ser **rurales**, esto es probablemente el **mismo efecto rural** —no un efecto independiente de la pobreza.
+
+## Eje pueblos originarios y migrantes
+
+```{r origen}
+if (!is.null(ori)) {
+  ot <- ori[, .(Zona = zona, `Bajo control` = bajo_control,
+                `% pueblos originarios` = pct_pueblos_orig, `% migrantes` = pct_migrantes)]
+  knitr::kable(ot, align = "lrrr", format.args = list(big.mark = "."))
+}
+```
+
+Entre las personas con demencia bajo control, **2,4 %** son de pueblos originarios a nivel país, con patrón territorial: **6,7 % en zonas rurales** (donde vive más población originaria) vs 1,6 % urbano. Los **migrantes** son apenas **0,6 %**.
+
+::: {.implica}
+El 2,4 % nacional **parece bajo** frente al peso poblacional de los pueblos originarios (~13 %), lo que **sugiere posible subdetección** — pero es una **hipótesis**: para confirmarla hace falta el denominador poblacional comunal (Censo 2024). Es la línea de trabajo a seguir en el eje de equidad étnica.
+:::
+
+::: {.caveat}
+Las columnas de pueblos originarios y migrantes son **marginales independientes**: no se cruzan entre sí ni con edad/sexo, y la autoidentificación está subregistrada. El eje **migrante** es poco informativo para demencia (la migración es joven; la demencia, de 65+).
+:::

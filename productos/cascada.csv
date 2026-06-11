@@ -1,0 +1,6 @@
+etapa_orden,etapa,PAIS,mixto,rural,urbano
+1,1. Sospecha (A06 consultorías),325,49,89,57
+2,2. Diagnóstico (A06 consultorías),467,72,114,98
+3,"3. Ingreso SM (A05, flujo anual)",15117,2390,1243,3645
+4,"4. Bajo control (P6, stock dic)",14514,2065,1710,3776
+5,"5. Domiciliaria dep. severa c/demencia (P3, stock dic)",23209,4461,3009,5177

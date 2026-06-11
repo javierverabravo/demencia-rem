@@ -1,0 +1,52 @@
+---
+title: "Glosario"
+subtitle: "Cada término, en lenguaje técnico y en palabras simples"
+---
+
+::: {.glosario}
+
+Brecha de detección
+: *Técnico:* 1 − (personas bajo control SM por demencia 65+ / demencia esperada 65+), por comuna.
+: *En simple:* de toda la demencia que se espera en las personas mayores, qué parte **no** está siendo seguida por la salud mental pública.
+
+Población bajo control
+: *Técnico:* stock de personas en seguimiento por un programa a una fecha de corte (aquí, diciembre).
+: *En simple:* cuánta gente está hoy siendo atendida y seguida por ese problema.
+
+Demencia esperada
+: *Técnico:* Σ (población por tramo de edad × prevalencia de demencia del tramo), ajustada urbano/rural, escalada a la población pública (FONASA).
+: *En simple:* cuántas personas mayores con demencia debería haber en una comuna, según su edad y su tamaño.
+
+Prevalencia
+: *Técnico:* proporción de una población que tiene la condición en un momento dado.
+: *En simple:* qué tan común es la demencia; aquí, cuántos de cada 100 adultos mayores la tienen (sube mucho con la edad).
+
+Denominador público (FONASA)
+: *Técnico:* población inscrita en atención primaria pública, usada como base en vez de la población total.
+: *En simple:* contamos solo a quienes el sistema público debe atender (no a quienes están en isapres), para que la comparación sea justa.
+
+Subregistro
+: *Técnico:* combinaciones establecimiento-período esperadas sin dato, en centros que sí deberían registrar.
+: *En simple:* actividad que ocurrió pero no quedó anotada. No es lo mismo que "no pasó nada".
+
+Cero estructural
+: *Técnico:* ausencia de registro porque el establecimiento no realiza ese programa por diseño.
+: *En simple:* un centro que "no registra" simplemente porque eso no es lo suyo (no es una falla).
+
+VPC (partición de varianza)
+: *Técnico:* fracción de la varianza total (escala latente) atribuible a un nivel (establecimiento, comuna, región).
+: *En simple:* de todo lo que hace que unos centros registren y otros no, qué porción se explica por el centro, por la comuna o por la región.
+
+MOR (Median Odds Ratio)
+: *Técnico:* exp(√(2σ²)·0,6745); mediana del cociente de odds entre dos unidades al azar de distinto grupo.
+: *En simple:* si mandas al mismo paciente a dos centros al azar, cuántas veces difiere su probabilidad de quedar registrado.
+
+Moran / LISA
+: *Técnico:* índice de autocorrelación espacial global (Moran) y local (LISA, clústeres alto-alto / bajo-bajo).
+: *En simple:* mide si las comunas vecinas se parecen (si la detección se agrupa en el mapa) y dónde están esos grupos.
+
+Cascada de atención
+: *Técnico:* secuencia sospecha → diagnóstico → ingreso → bajo control → domiciliaria.
+: *En simple:* el camino ideal de una persona por el sistema; aquí vemos que el dato **no** permite seguirlo.
+
+:::

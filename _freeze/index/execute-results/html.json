@@ -1,0 +1,21 @@
+{
+  "hash": "61b3de820ebd1206b7b6fa2007d82f0f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Demencia en la red pública de salud\"\nsubtitle: \"¿Cuánta demencia de las personas mayores ve y sigue el sistema público, y dónde están las mayores brechas?\"\n---\n\n\n\n::: {.callout-note appearance=\"simple\"}\nEste sitio resume un análisis de las **Series REM** (registro estadístico mensual del DEIS-MINSAL) sobre la **detección de demencia en personas de 65 años o más** en la red pública chilena, año 2025. Antes de mirar los resultados conviene leer **[Cómo leer esto](metodologia.qmd)** y el **[Glosario](glosario.qmd)**: explican qué puede y qué no puede decir este dato.\n:::\n\n## Lo esencial\n\n::: {.kpi-grid}\n::: {.kpi .alert}\n::: {.num}\n93.7 %\n:::\n::: {.lab}\n**Brecha de detección**: personas mayores con demencia *esperada* que **no** están bajo control en salud mental pública.\n:::\n:::\n::: {.kpi}\n::: {.num}\n~1 de 16\n:::\n::: {.lab}\nProporción de la demencia esperada que **sí** está bajo control (tasa de detección 6.3 %).\n:::\n:::\n::: {.kpi}\n::: {.num}\n1,7×\n:::\n::: {.lab}\nLas comunas **urbanas** detectan ~1,7 veces más que las **rurales**. La demencia rural es la más invisible.\n:::\n:::\n:::\n\n## Las cuatro preguntas, en una línea\n\n1. **[Brecha de detección](deteccion.qmd)** — el sistema público de salud mental tiene bajo control cerca de **1 de cada 16** personas mayores con la demencia esperada. La brecha es mayor en zonas rurales.\n2. **[Cascada de atención](cascada.qmd)** — los registros **no permiten seguir** el camino sospecha → diagnóstico → control → cuidado: la puerta de entrada formal casi no se registra, y la demencia se hace visible **tarde**.\n3. **[Equidad](equidad.qmd)** — la inequidad robusta es **territorial** (rural); el eje de pueblos originarios sugiere posible subdetección (a confirmar con datos censales).\n4. **[¿Dónde vive la variación?](variacion.qmd)** — que tu demencia quede registrada depende sobre todo **del centro de salud** al que llegas (más que de la región): una *lotería de establecimiento*.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nz <- res[grupo %in% c(\"urbano\",\"mixto\",\"rural\")]\nz[, grupo := factor(grupo, levels = c(\"urbano\",\"mixto\",\"rural\"),\n                    labels = c(\"Urbano\",\"Mixto\",\"Rural\"))]\nggplot(z, aes(grupo, tasa_deteccion, fill = grupo)) +\n  geom_col(width = .6, show.legend = FALSE) +\n  geom_text(aes(label = pct(tasa_deteccion, 1)), vjust = -0.4, fontface = \"bold\") +\n  scale_fill_manual(values = c(Urbano = COL_PRIMARY, Mixto = \"#7BA7BF\", Rural = COL_ALERT)) +\n  scale_y_continuous(labels = scales::percent, expand = expansion(c(0, .15))) +\n  labs(x = NULL, y = \"Tasa de detección\") + theme_rem()\n```\n\n::: {.cell-output-display}\n![Tasa de detección de demencia (bajo control SM / esperados 65+), por tipo de comuna. Denominador de población pública (FONASA).](index_files/figure-html/grafico-zonas-1.png){width=768}\n:::\n:::\n\n\n::: {.caveat}\nLa \"brecha\" mide lo que el **subsistema de salud mental pública** no tiene bajo control formal — no es demencia totalmente sin atender (parte se maneja en atención primaria sin registro de control, en el sector privado, o no se detecta). Ver caveats completos en **[Robustez](robustez.qmd)**.\n:::\n\n> Recorrido sugerido: **[Cómo leer esto](metodologia.qmd)** → **[Glosario](glosario.qmd)** → **[Territorio](territorio.qmd)** (el mapa) → las cuatro preguntas → **[Robustez](robustez.qmd)**.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

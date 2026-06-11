@@ -1,0 +1,25 @@
+codigo_prestacion,serie,formulario,bloque,instancia,descripcion,en_universo,nota
+05901801,A,A05,ingresos_sm,ingreso_leve,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,si,"Atencion mensual; columnas etarias x sexo + PO/Migrantes"
+05901802,A,A05,ingresos_sm,ingreso_moderado,Ingreso programa SM por Demencias - Moderado,si,
+05901803,A,A05,ingresos_sm,ingreso_avanzado,Ingreso programa SM por Demencias - Avanzado,si,
+05224201,A,A05,egresos_sm,egreso_leve,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,si,
+05224202,A,A05,egresos_sm,egreso_moderado,Egreso programa SM por Demencias - Moderado,si,
+05224203,A,A05,egresos_sm,egreso_avanzado,Egreso programa SM por Demencias - Avanzado,si,
+06906135,A,A06,pnd_evaluaciones,reeval_gds,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,si,"Secc. F PND; cobertura muy baja (143 estab.)"
+06906140,A,A06,pnd_evaluaciones,cuidador_sobrecarga,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,si,"Secc. F PND; 68 estab."
+06906145,A,A06,pnd_evaluaciones,cuidador_satisfaccion,Cuidadores de Personas con Demencia - Evaluacion Satisfaccion usuaria,si,"Secc. F PND; 22 estab."
+19201021,A,A19a,familias,familia_demencia,Familia con integrante con demencia,si,"Conteo grueso; solo columnas total (98% NA)"
+26411010,A,A26,domiciliaria_padds,dep_severa_total,Dep. severa por condiciones asociadas (TOTAL del eje),condicional,"Demencia = total - sin demencia; via familia/PADDS"
+26411011,A,A26,domiciliaria_padds,dep_severa_terminal,Familia dep. severa terminal (excl. estadios avanzados de demencia),condicional,
+26411012,A,A26,domiciliaria_padds,dep_severa_sin_demencia,Familia dep. severa SIN diagnostico de demencia,condicional,"Resta para obtener 'con demencia'"
+28201001,A,A28,rehabilitacion,dx_alzheimer,Eje diagnostico Alzheimer y otras demencias,si,
+28022300,A,A28,rehabilitacion,estimulacion_cognitiva,Estimulacion cognitiva,si,
+28021500,A,A28,rehabilitacion,estimulacion_cognitiva_2,Estimulacion cognitiva (2),si,"Volumen concentrado: 139 estab., alta intensidad"
+28020840,A,A28,rehabilitacion,cuidadores,Cuidadores,si,
+28020900,A,A28,rehabilitacion,cuidadores_2,Cuidadores (2),si,
+01010053,BS,B,prestaciones_cognitivas,evaluacion_cognitiva,Evaluacion cognitiva,si,"CSV usa codigo col-A (no 5099063); prestacion trazadora"
+01010054,BS,B,prestaciones_cognitivas,estimulacion_cognitiva,Estimulacion cognitiva,si,
+01010916,BS,B,prestaciones_cognitivas,eval_funciones_cognitivas,Evaluacion de funciones cognitivas,si,
+P6222300,P,P6,bajo_control_sm,demencia_sev_a,Poblacion bajo control SM Demencias (incluye Alzheimer),si,"NUMERADOR PRINCIPAL Q1; stock semestral jun/dic; 1224 estab."
+P6223310,P,P6,bajo_control_sm,demencia_sev_b,Poblacion bajo control SM Demencias - seccion hermana,condicional,"110 estab.; verificar si duplica P6222300 antes de sumar"
+P3171613,P,P3,bajo_control_am,dep_severa_con_demencia,Dep. severa domiciliaria Con Demencia (subgrupo),si,"Subgrupo de dependencia severa domiciliaria; stock semestral"

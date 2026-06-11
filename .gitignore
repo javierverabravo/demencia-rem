@@ -1,0 +1,40 @@
+# --- Datos crudos y pesados (NO se versionan) ---
+datos/
+*.zip
+*.csv.gz
+SERIE_REM_*.zip
+
+# Diccionarios y manuales (pesados; se obtienen del DEIS)
+Diccionarios/
+*.xlsm
+*.pdf
+
+# --- Productos cacheados que se regeneran ---
+*.rds
+productos/cache/
+
+# --- Quarto / render ---
+/.quarto/
+docs/            # se regenera con quarto render; quitar de aquí si se publica por commit
+*_files/
+*_cache/
+
+# --- R ---
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj.user
+
+# --- SO / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+
+# --- EXCEPCIONES: estos SÍ se versionan ---
+!crosswalk/
+!crosswalk/*.csv
+!crosswalk/*.md
+!productos/.gitkeep
+
+**/*.quarto_ipynb

@@ -1,0 +1,37 @@
+---
+title: "Cómo leer esto"
+subtitle: "Qué es el dato, qué puede decir y qué no"
+---
+
+## ¿De dónde salen estas cifras?
+
+Del **REM** (Resumen Estadístico Mensual), el registro con que cada establecimiento de la red pública de salud reporta su actividad al **DEIS-MINSAL**. No es una encuesta ni un censo de personas: es lo que **los centros anotan** mes a mes. A eso le sumamos dos referencias externas:
+
+- **Proyecciones de población del INE** (cuántas personas mayores hay en cada comuna) y la **prevalencia de demencia por edad** (estudio 10/66 en Chile), para estimar **cuánta demencia se espera**.
+- **Inscritos en FONASA / atención primaria**, para usar como denominador la **población que realmente atiende el sistema público** (no la que está en isapres).
+
+Todas las cifras son **reproducibles**: salen de correr el código del proyecto, y este sitio **solo lee las tablas finales** ya calculadas.
+
+## Lo que este dato SÍ puede decir
+
+- Cuántas personas mayores con demencia están **bajo control** en la red pública y cómo se compara con lo **esperado** (la *brecha*).
+- Cómo varía eso **entre territorios** (comunas urbanas/rurales, regiones) y **entre establecimientos**.
+- Dónde el registro es más débil (subregistro) y dónde el Plan Nacional de Demencia se asocia a mejor detección.
+
+## Lo que este dato NO puede decir {.callout-important-ish}
+
+::: {.callout-warning appearance="simple"}
+- **No mide prevalencia real**: solo ve a quien **contacta el sistema público y queda registrado**. La demencia atendida en el sector privado, o en la familia, o no detectada, no aparece.
+- **No sigue a personas**: son conteos agregados por establecimiento y mes, no trayectorias individuales.
+- **No mide calidad clínica ni resultados de salud** (progresión, mortalidad): mide **registro y seguimiento administrativo**.
+- **No distingue** "no hubo actividad" de "hubo y no se registró": por eso hablamos de **subregistro**, no de ausencia del problema.
+- Las desagregaciones (sexo, edad, pueblos originarios, migrantes) son **columnas marginales independientes**: no se pueden cruzar entre sí.
+:::
+
+## Cómo está escrito este sitio
+
+Cada página tiene una mirada **en simple** (sin tecnicismos) y, donde corresponde, **qué implica** para las decisiones. El detalle estadístico completo —de dónde sale cada número y por qué significa lo que decimos— está en el documento **Fundamentación estadística** (PDF descargable), escrito en capas para sociedad civil, tomadores de decisiones y academia.
+
+::: {.ensimple}
+Lee este dato como un **termómetro del registro público**: dice cuánto ve y sigue formalmente el sistema, dónde menos, y qué palanca (el centro, la comuna, el programa) puede mover la aguja. No es una acusación a nadie; es un mapa para priorizar.
+:::

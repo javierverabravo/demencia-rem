@@ -1,0 +1,21 @@
+{
+  "hash": "b34e4becd4cf5e55afa4edc27424e532",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"6 · ¿Dónde vive la variación?\"\nsubtitle: \"¿Del centro, de la comuna o de la región depende que la demencia quede registrada?\"\n---\n\n\n\n::: {.ensimple}\n¿De qué depende que un centro registre la demencia: del **centro** concreto, de la **comuna** o de la **región**? Lo medimos con un modelo de tres niveles. La respuesta: depende **sobre todo del centro** al que te toca ir. Es, en buena parte, una *lotería de establecimiento*.\n:::\n\n## Cuánto explica cada nivel\n\n\n::: {.cell}\n\n```{.r .cell-code}\nif (!is.null(mn)) {\n  pm <- mn[modelo == \"region/comuna/establecimiento\"]\n  pm[, nivel2 := fcase(grepl(\"^id\", nivel), \"Establecimiento\",\n                       grepl(\"^comuna\", nivel), \"Comuna\",\n                       grepl(\"^region\", nivel), \"Región\", default = nivel)]\n  pm[, nivel2 := factor(nivel2, levels = c(\"Región\",\"Comuna\",\"Establecimiento\"))]\n  ggplot(pm, aes(vpc_pct, nivel2)) +\n    geom_col(fill = COL_PRIMARY, alpha = .85, width = .6) +\n    geom_text(aes(label = paste0(vpc_pct, \" %\")), hjust = -0.1, fontface = \"bold\") +\n    scale_x_continuous(expand = expansion(c(0,.18))) +\n    labs(x = \"% de la varianza explicada\", y = NULL) + theme_rem()\n}\n```\n\n::: {.cell-output-display}\n![Partición de la varianza (VPC): qué porción de por qué unos centros registran y otros no vive en cada nivel. Modelo principal.](variacion_files/figure-html/vpc-1.png){width=768}\n:::\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nif (!is.null(mn)) {\n  tt <- mn[, .(Modelo = modelo, Nivel = nivel, `VPC %` = vpc_pct, MOR = MOR)]\n  knitr::kable(tt, align = \"llrr\")\n}\n```\n\n::: {.cell-output-display}\n\n\n|Modelo                               |Nivel              | VPC %|   MOR|\n|:------------------------------------|:------------------|-----:|-----:|\n|region/comuna/establecimiento        |region.(Intercept) |   8.4|  3.01|\n|region/comuna/establecimiento        |comuna.(Intercept) |  17.6|  4.93|\n|region/comuna/establecimiento        |id.(Intercept)     |  53.2| 15.96|\n|servicioSalud/comuna/establecimiento |ss.(Intercept)     |  13.5|  4.19|\n|servicioSalud/comuna/establecimiento |comuna.(Intercept) |  16.4|  4.84|\n|servicioSalud/comuna/establecimiento |id.(Intercept)     |  50.4| 15.93|\n\n\n:::\n:::\n\n\n## Cómo leerlo\n\n- El **establecimiento explica el 53 %** de la variación, con un **MOR de ~16**: si mandas al mismo paciente a dos centros al azar de la misma comuna, sus probabilidades de quedar registrado difieren, en la mediana, **16 veces**.\n- El **territorio importa, pero menos**: comuna (17,6 %) + región (8,4 %) ≈ **26 %**.\n- La **red administrativa pesa más que la geografía**: el **Servicio de Salud** explica 13,5 %, más que la región (8,4 %).\n\n::: {.implica}\nLa palanca de mayor rendimiento es **centro a centro**: registro, capacitación, sistemas de información y supervisión por establecimiento. Las campañas puramente **regionales** rinden poco; el **Servicio de Salud** sí es una unidad de gestión con tracción. En síntesis: **gestión de establecimientos coordinada por Servicio de Salud**.\n:::\n\n::: {.caveat}\nMide **visibilidad administrativa** (registro), no calidad clínica. Modelo logístico vacío de 3 niveles; VPC en escala latente (por eso se acompaña del MOR). Ambos modelos **convergieron** (ver [Robustez](robustez.qmd)). Detalle en la *Fundamentación estadística* (PDF).\n:::\n",
+    "supporting": [
+      "variacion_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

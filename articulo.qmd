@@ -1,0 +1,33 @@
+---
+title: "Brecha de deteccion de demencia en la red publica chilena"
+subtitle: "Analisis de las Series REM 2025 (DEIS-MINSAL)"
+format:
+  pdf:
+    documentclass: scrartcl
+    papersize: letter
+    lang: es
+    toc: true
+    number-sections: true
+---
+
+# Introduccion
+
+Pregunta rectora y secundarias (ver `FASE_0_INSTRUMENTO.md`). <!-- TODO Fase 6 -->
+
+# Datos y metodos
+
+Instrumento REM, universo demencia (crosswalk), diagnostico de celdas (Fase 1),
+panel y subregistro (Fase 3), denominadores (Fase 4), modelos (Fase 5).
+Fundamentacion completa en `FUNDAMENTACION_ESTADISTICA.md`. <!-- TODO -->
+
+# Resultados
+
+<!-- TODO Fase 5: leer productos/. -->
+
+# Limitaciones
+
+Lo que el REM no puede responder; subregistro; marginales sin cruces; eje migrante subpotenciado.
+
+# Reproducibilidad
+
+`source("R/10_run_all.R")` y luego `quarto render`.

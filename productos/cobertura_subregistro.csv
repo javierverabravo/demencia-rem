@@ -1,0 +1,232 @@
+serie,bloque,codigo,descripcion,tipo,nivel_atencion,establecimientos,periodos_esperados,periodos_observados,intensidad_media,volumen,subregistro_pct
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Posta de Salud Rural (PSR),Primario,661,7932,2166,1.3,689,72.7
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Centro de Salud Familiar (CESFAM),Primario,593,7116,5864,2.8,9896,17.6
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Centro Comunitario de Salud Familiar (CECOSF),Primario,215,2580,1308,1.6,695,49.3
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Hospital,"",60,720,543,2.3,626,24.6
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Hospital,Primario,18,216,168,1.9,154,22.2
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Consultorio General Rural (CGR),Primario,12,144,74,1.4,38,48.6
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Hospital,Terciario,5,60,56,2.3,83,6.7
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Consultorio General Urbano (CGU),Primario,2,24,24,1.7,24,0
+A,domiciliaria_padds,26411010,Dep. severa por condiciones asociadas (TOTAL del eje),Clínica Dental,Primario,1,12,7,,0,41.7
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Centro de Salud Familiar (CESFAM),Primario,566,6792,3973,2,4680,41.5
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Posta de Salud Rural (PSR),Primario,380,4560,812,1.2,285,82.2
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Centro Comunitario de Salud Familiar (CECOSF),Primario,169,2028,581,1.3,314,71.4
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Hospital,"",55,660,233,2,203,64.7
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Hospital,Primario,14,168,75,1.6,49,55.4
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Consultorio General Rural (CGR),Primario,11,132,52,1.4,26,60.6
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Hospital,Terciario,8,96,38,2.4,33,60.4
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Consultorio General Urbano (CGU),Primario,2,24,14,1.2,11,41.7
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Clínica Dental,Primario,1,12,2,,0,83.3
+A,domiciliaria_padds,26411011,Familia dep. severa terminal (excl. estadios avanzados de demencia),Centro de Diagnóstico y Terapeútico,Secundario,1,12,4,,0,66.7
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Posta de Salud Rural (PSR),Primario,812,9744,3785,1.4,1404,61.2
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Centro de Salud Familiar (CESFAM),Primario,598,7176,6507,4.2,20595,9.3
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Centro Comunitario de Salud Familiar (CECOSF),Primario,238,2856,1812,1.9,1443,36.6
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Hospital,"",62,744,600,3.2,1153,19.4
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Hospital,Primario,18,216,184,2.1,253,14.8
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Consultorio General Rural (CGR),Primario,12,144,117,1.8,92,18.8
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Hospital,Terciario,8,96,70,2.7,129,27.1
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Consultorio General Urbano (CGU),Primario,2,24,24,2.8,51,0
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Clínica Dental,Primario,2,24,11,8.7,26,54.2
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Unidad de Procedimientos Móvil,Primario,1,12,1,,0,91.7
+A,domiciliaria_padds,26411012,Familia dep. severa SIN diagnostico de demencia,Centro de Diagnóstico y Terapeútico,Secundario,1,12,4,,0,66.7
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro de Salud Familiar (CESFAM),Primario,256,3072,611,2.1,605,80.1
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Posta de Salud Rural (PSR),Primario,55,660,73,1.2,55,88.9
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro Comunitario de Salud Familiar (CECOSF),Primario,42,504,59,1.3,33,88.3
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro Comunitario de Salud Mental  (COSAM),Secundario,32,384,47,1.3,43,87.8
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Hospital,"",27,324,68,1.8,102,79
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Hospital,Terciario,17,204,55,3.2,165,73
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Hospital,Primario,7,84,11,1.3,8,86.9
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,5,60,49,3.2,148,18.3
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Consultorio General Rural (CGR),Primario,3,36,6,1,1,83.3
+A,egresos_sm,05224201,Egreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro de Salud Mental,Secundario,2,24,21,4.4,92,12.5
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Centro de Salud Familiar (CESFAM),Primario,261,3132,717,2.2,680,77.1
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Posta de Salud Rural (PSR),Primario,60,720,72,1.2,60,90
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Centro Comunitario de Salud Familiar (CECOSF),Primario,45,540,68,1.2,31,87.4
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Centro Comunitario de Salud Mental  (COSAM),Secundario,40,480,88,1.3,82,81.7
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Hospital,"",25,300,54,1.5,61,82
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Hospital,Terciario,15,180,49,2.5,112,72.8
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,5,60,39,3,118,35
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Consultorio General Rural (CGR),Primario,4,48,4,1.5,3,91.7
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Hospital,Primario,4,48,10,1.2,7,79.2
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Centro de Salud Mental,Secundario,2,24,24,11.7,281,0
+A,egresos_sm,05224202,Egreso programa SM por Demencias - Moderado,Consultorio General Urbano (CGU),Primario,1,12,1,,0,91.7
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Centro de Salud Familiar (CESFAM),Primario,222,2664,539,2.1,526,79.8
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Posta de Salud Rural (PSR),Primario,49,588,58,1.4,56,90.1
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Centro Comunitario de Salud Mental  (COSAM),Secundario,33,396,65,1.5,68,83.6
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Centro Comunitario de Salud Familiar (CECOSF),Primario,32,384,43,1.4,23,88.8
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Hospital,"",27,324,66,1.7,84,79.6
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Hospital,Terciario,15,180,43,3.5,150,76.1
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Hospital,Primario,8,96,17,1.6,11,82.3
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,5,60,36,3.4,116,40
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Centro de Referencia de Salud (CRS),Secundario,2,24,18,3.5,63,25
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Consultorio General Rural (CGR),Primario,2,24,2,1.5,3,91.7
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Centro de Salud Mental,Secundario,2,24,22,5.5,121,8.3
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Consultorio General Urbano (CGU),Primario,1,12,1,,0,91.7
+A,egresos_sm,05224203,Egreso programa SM por Demencias - Avanzado,Hospital de Día,Secundario,1,12,1,1,1,91.7
+A,familias,19201021,Familia con integrante con demencia,Centro de Salud Familiar (CESFAM),Primario,319,3828,1640,12.3,20159,57.2
+A,familias,19201021,Familia con integrante con demencia,Posta de Salud Rural (PSR),Primario,112,1344,231,1.9,444,82.8
+A,familias,19201021,Familia con integrante con demencia,Centro Comunitario de Salud Familiar (CECOSF),Primario,96,1152,337,3.3,1123,70.7
+A,familias,19201021,Familia con integrante con demencia,Hospital,"",25,300,117,17.4,2038,61
+A,familias,19201021,Familia con integrante con demencia,Hospital,Primario,12,144,60,7.1,426,58.3
+A,familias,19201021,Familia con integrante con demencia,Hospital,Terciario,8,96,40,22.8,911,58.3
+A,familias,19201021,Familia con integrante con demencia,Consultorio General Rural (CGR),Primario,5,60,18,2.8,50,70
+A,familias,19201021,Familia con integrante con demencia,Centro Comunitario de Salud Mental  (COSAM),Secundario,3,36,13,1.5,20,63.9
+A,familias,19201021,Familia con integrante con demencia,Consultorio General Urbano (CGU),Primario,2,24,12,5.9,71,50
+A,familias,19201021,Familia con integrante con demencia,Centro de Salud Mental,Secundario,2,24,23,21.3,489,4.2
+A,familias,19201021,Familia con integrante con demencia,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,1,12,1,1,1,91.7
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro de Salud Familiar (CESFAM),Primario,459,5508,2090,2,4106,62.1
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Posta de Salud Rural (PSR),Primario,139,1668,197,1.1,219,88.2
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro Comunitario de Salud Familiar (CECOSF),Primario,115,1380,255,1.3,344,81.5
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Hospital,"",50,600,169,2.3,394,71.8
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro Comunitario de Salud Mental  (COSAM),Secundario,34,408,63,1.3,80,84.6
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Hospital,Terciario,19,228,79,3.8,304,65.4
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Hospital,Primario,15,180,60,2,120,66.7
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Consultorio General Rural (CGR),Primario,6,72,12,1.2,15,83.3
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,5,60,50,4,198,16.7
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Consultorio General Urbano (CGU),Primario,2,24,6,1,6,75
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro de Salud Mental,Secundario,2,24,24,10.9,262,0
+A,ingresos_sm,05901801,Ingreso programa SM por Demencias (incluye Alzheimer) - Leve,Centro de Referencia de Salud (CRS),Secundario,1,12,1,1,1,91.7
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Centro de Salud Familiar (CESFAM),Primario,432,5184,1966,2.3,4515,62.1
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Posta de Salud Rural (PSR),Primario,114,1368,141,1.3,177,89.7
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Centro Comunitario de Salud Familiar (CECOSF),Primario,103,1236,244,1.5,372,80.3
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Hospital,"",46,552,148,1.9,280,73.2
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Centro Comunitario de Salud Mental  (COSAM),Secundario,46,552,133,1.5,193,75.9
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Hospital,Terciario,20,240,76,2.7,205,68.3
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Hospital,Primario,14,168,41,1.5,62,75.6
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,5,60,49,3.7,181,18.3
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Consultorio General Rural (CGR),Primario,4,48,9,1.6,14,81.2
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Consultorio General Urbano (CGU),Primario,2,24,8,1.9,15,66.7
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Centro de Salud Mental,Secundario,2,24,24,16.1,386,0
+A,ingresos_sm,05901802,Ingreso programa SM por Demencias - Moderado,Otro,No Aplica,1,12,1,1,1,91.7
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Centro de Salud Familiar (CESFAM),Primario,301,3612,916,1.9,1746,74.6
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Posta de Salud Rural (PSR),Primario,52,624,62,1.1,69,90.1
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Centro Comunitario de Salud Familiar (CECOSF),Primario,43,516,75,1.7,127,85.5
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Hospital,"",32,384,70,1.7,120,81.8
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Centro Comunitario de Salud Mental  (COSAM),Secundario,30,360,77,1.4,109,78.6
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Hospital,Terciario,15,180,51,2.5,126,71.7
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Hospital,Primario,10,120,27,2.2,59,77.5
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,5,60,52,3,154,13.3
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Centro de Referencia de Salud (CRS),Secundario,2,24,19,4.5,86,20.8
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Consultorio General Rural (CGR),Primario,2,24,3,1.7,5,87.5
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Consultorio General Urbano (CGU),Primario,2,24,6,1.5,9,75
+A,ingresos_sm,05901803,Ingreso programa SM por Demencias - Avanzado,Centro de Salud Mental,Secundario,2,24,20,2.9,57,16.7
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Centro de Salud Familiar (CESFAM),Primario,93,1116,573,10.6,6066,48.7
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Centro Comunitario de Salud Familiar (CECOSF),Primario,20,240,58,2.1,120,75.8
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Hospital,"",11,132,49,7.1,346,62.9
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Posta de Salud Rural (PSR),Primario,6,72,13,1.8,23,81.9
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,4,48,30,5.6,168,37.5
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Hospital,Primario,3,36,3,2,6,91.7
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Hospital,Terciario,2,24,22,64.5,1420,8.3
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Consultorio General Urbano (CGU),Primario,2,24,13,2.4,31,45.8
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Consultorio General Rural (CGR),Primario,1,12,1,1,1,91.7
+A,pnd_evaluaciones,06906135,Personas con Demencia con Reevaluacion Deterioro GLOBAL GDS Reisberg,Centro Comunitario de Salud Mental  (COSAM),Secundario,1,12,11,7.3,80,8.3
+A,pnd_evaluaciones,06906140,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,Centro de Salud Familiar (CESFAM),Primario,36,432,191,9.2,1766,55.8
+A,pnd_evaluaciones,06906140,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,Posta de Salud Rural (PSR),Primario,10,120,14,2.1,30,88.3
+A,pnd_evaluaciones,06906140,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,Centro Comunitario de Salud Familiar (CECOSF),Primario,9,108,29,2.4,71,73.1
+A,pnd_evaluaciones,06906140,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,Hospital,"",6,72,23,4.3,98,68.1
+A,pnd_evaluaciones,06906140,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,4,48,36,4.9,175,25
+A,pnd_evaluaciones,06906140,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,Hospital,Terciario,1,12,10,3.5,35,16.7
+A,pnd_evaluaciones,06906140,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,Hospital,Primario,1,12,1,3,3,91.7
+A,pnd_evaluaciones,06906140,Cuidadores de Personas con Demencia - Reevaluacion Sobrecarga,Centro Comunitario de Salud Mental  (COSAM),Secundario,1,12,11,6.5,71,8.3
+A,pnd_evaluaciones,06906145,Cuidadores de Personas con Demencia - Evaluacion Satisfaccion usuaria,Centro de Salud Familiar (CESFAM),Primario,12,144,50,11.9,594,65.3
+A,pnd_evaluaciones,06906145,Cuidadores de Personas con Demencia - Evaluacion Satisfaccion usuaria,Centro Comunitario de Salud Familiar (CECOSF),Primario,5,60,18,3.7,66,70
+A,pnd_evaluaciones,06906145,Cuidadores de Personas con Demencia - Evaluacion Satisfaccion usuaria,Posta de Salud Rural (PSR),Primario,2,24,3,1.3,4,87.5
+A,pnd_evaluaciones,06906145,Cuidadores de Personas con Demencia - Evaluacion Satisfaccion usuaria,Hospital,Terciario,1,12,10,3.5,35,16.7
+A,pnd_evaluaciones,06906145,Cuidadores de Personas con Demencia - Evaluacion Satisfaccion usuaria,Hospital,"",1,12,3,16.7,50,75
+A,pnd_evaluaciones,06906145,Cuidadores de Personas con Demencia - Evaluacion Satisfaccion usuaria,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,1,12,12,4.8,58,0
+A,rehabilitacion,28020840,Cuidadores,Centro de Salud Familiar (CESFAM),Primario,85,1020,198,4.1,238,80.6
+A,rehabilitacion,28020840,Cuidadores,Posta de Salud Rural (PSR),Primario,18,216,32,,0,85.2
+A,rehabilitacion,28020840,Cuidadores,Hospital,"",9,108,11,2,2,89.8
+A,rehabilitacion,28020840,Cuidadores,Hospital,Primario,3,36,4,1,2,88.9
+A,rehabilitacion,28020840,Cuidadores,Centro Comunitario de Salud Familiar (CECOSF),Primario,3,36,6,,0,83.3
+A,rehabilitacion,28020840,Cuidadores,Otro,No Aplica,1,12,1,,0,91.7
+A,rehabilitacion,28020840,Cuidadores,Consultorio General Rural (CGR),Primario,1,12,2,,0,83.3
+A,rehabilitacion,28020840,Cuidadores,Centro de Referencia de Salud (CRS),Secundario,1,12,1,,0,91.7
+A,rehabilitacion,28020840,Cuidadores,Centro de Especialidades de Atención Primaria (CEAP),Primario,1,12,1,,0,91.7
+A,rehabilitacion,28020900,Cuidadores (2),Centro de Salud Familiar (CESFAM),Primario,110,1320,339,3.9,243,74.3
+A,rehabilitacion,28020900,Cuidadores (2),Posta de Salud Rural (PSR),Primario,14,168,33,,0,80.4
+A,rehabilitacion,28020900,Cuidadores (2),Hospital,Primario,7,84,23,4.6,32,72.6
+A,rehabilitacion,28020900,Cuidadores (2),Centro Comunitario de Salud Familiar (CECOSF),Primario,6,72,9,2,2,87.5
+A,rehabilitacion,28020900,Cuidadores (2),Hospital,"",6,72,8,,0,88.9
+A,rehabilitacion,28020900,Cuidadores (2),Consultorio General Rural (CGR),Primario,2,24,4,3,3,83.3
+A,rehabilitacion,28020900,Cuidadores (2),Centro de Referencia de Salud (CRS),Secundario,1,12,3,10,20,75
+A,rehabilitacion,28020900,Cuidadores (2),Centro de Especialidades de Atención Primaria (CEAP),Primario,1,12,3,,0,75
+A,rehabilitacion,28021500,Estimulacion cognitiva (2),Hospital,Terciario,77,924,872,514.1,448323,5.6
+A,rehabilitacion,28021500,Estimulacion cognitiva (2),Hospital,"",43,516,357,98.6,35203,30.8
+A,rehabilitacion,28021500,Estimulacion cognitiva (2),Hospital,Primario,11,132,95,25.6,2436,28
+A,rehabilitacion,28021500,Estimulacion cognitiva (2),Centro de Salud Familiar (CESFAM),Primario,4,48,4,26.5,106,91.7
+A,rehabilitacion,28021500,Estimulacion cognitiva (2),Centro de Referencia de Salud (CRS),Secundario,3,36,33,80.9,2669,8.3
+A,rehabilitacion,28021500,Estimulacion cognitiva (2),Posta de Salud Rural (PSR),Primario,1,12,1,2,2,91.7
+A,rehabilitacion,28022300,Estimulacion cognitiva,Centro de Salud Familiar (CESFAM),Primario,451,5412,4141,85.4,50369,23.5
+A,rehabilitacion,28022300,Estimulacion cognitiva,Posta de Salud Rural (PSR),Primario,390,4680,2026,6.5,749,56.7
+A,rehabilitacion,28022300,Estimulacion cognitiva,Hospital,"",54,648,478,2.3,14,26.2
+A,rehabilitacion,28022300,Estimulacion cognitiva,Centro Comunitario de Salud Familiar (CECOSF),Primario,42,504,204,3.1,31,59.5
+A,rehabilitacion,28022300,Estimulacion cognitiva,Hospital,Primario,16,192,165,45.5,955,14.1
+A,rehabilitacion,28022300,Estimulacion cognitiva,Consultorio General Rural (CGR),Primario,9,108,91,,0,15.7
+A,rehabilitacion,28022300,Estimulacion cognitiva,Otro,No Aplica,3,36,23,,0,36.1
+A,rehabilitacion,28022300,Estimulacion cognitiva,Centro de Rehabilitación,Secundario,3,36,27,4.7,14,25
+A,rehabilitacion,28022300,Estimulacion cognitiva,Hospital,Terciario,2,24,16,,0,33.3
+A,rehabilitacion,28022300,Estimulacion cognitiva,Centro de Referencia de Salud (CRS),Secundario,2,24,24,126.3,2147,0
+A,rehabilitacion,28022300,Estimulacion cognitiva,Centro de Salud,Primario,1,12,11,,0,8.3
+A,rehabilitacion,28022300,Estimulacion cognitiva,Centro de Especialidades de Atención Primaria (CEAP),Primario,1,12,4,,0,66.7
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Centro de Salud Familiar (CESFAM),Primario,249,2988,844,2.4,1985,71.8
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Posta de Salud Rural (PSR),Primario,121,1452,204,1.4,288,86
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Hospital,"",32,384,76,1.7,128,80.2
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Centro Comunitario de Salud Familiar (CECOSF),Primario,18,216,43,1.2,53,80.1
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Hospital,Primario,10,120,44,1.6,69,63.3
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Consultorio General Rural (CGR),Primario,7,84,20,1.6,32,76.2
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Hospital,Terciario,2,24,5,2.4,12,79.2
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Otro,No Aplica,1,12,1,1,1,91.7
+A,rehabilitacion,28201001,Eje diagnostico Alzheimer y otras demencias,Centro de Salud,Primario,1,12,2,2,4,83.3
+BS,prestaciones_cognitivas,01010053,Evaluacion cognitiva,Hospital,Terciario,28,336,274,121,33145,18.5
+BS,prestaciones_cognitivas,01010053,Evaluacion cognitiva,Posta de Salud Rural (PSR),Primario,18,216,93,5.2,483,56.9
+BS,prestaciones_cognitivas,01010053,Evaluacion cognitiva,Hospital,"",11,132,80,23.8,1907,39.4
+BS,prestaciones_cognitivas,01010053,Evaluacion cognitiva,Otro,No Aplica,2,24,20,13.4,268,16.7
+BS,prestaciones_cognitivas,01010053,Evaluacion cognitiva,Centro de Referencia de Salud (CRS),Secundario,2,24,13,29.1,378,45.8
+BS,prestaciones_cognitivas,01010053,Evaluacion cognitiva,Hospital,Primario,2,24,4,3,12,83.3
+BS,prestaciones_cognitivas,01010053,Evaluacion cognitiva,Centro de Salud Familiar (CESFAM),Primario,1,12,5,10.8,54,58.3
+BS,prestaciones_cognitivas,01010053,Evaluacion cognitiva,Centro Comunitario de Salud Familiar (CECOSF),Primario,1,12,9,8.2,74,25
+BS,prestaciones_cognitivas,01010054,Estimulacion cognitiva,Hospital,Terciario,32,384,309,262,80972,19.5
+BS,prestaciones_cognitivas,01010054,Estimulacion cognitiva,Hospital,"",18,216,136,125.4,17056,37
+BS,prestaciones_cognitivas,01010054,Estimulacion cognitiva,Posta de Salud Rural (PSR),Primario,18,216,77,3.5,269,64.4
+BS,prestaciones_cognitivas,01010054,Estimulacion cognitiva,Hospital,Primario,6,72,27,40.2,1085,62.5
+BS,prestaciones_cognitivas,01010054,Estimulacion cognitiva,Otro,No Aplica,2,24,20,16.8,336,16.7
+BS,prestaciones_cognitivas,01010054,Estimulacion cognitiva,Centro de Referencia de Salud (CRS),Secundario,2,24,12,51.3,616,50
+BS,prestaciones_cognitivas,01010054,Estimulacion cognitiva,Centro Comunitario de Salud Familiar (CECOSF),Primario,2,24,9,5.2,47,62.5
+BS,prestaciones_cognitivas,01010054,Estimulacion cognitiva,Centro de Salud Familiar (CESFAM),Primario,1,12,1,254,254,91.7
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Hospital,Terciario,51,612,482,132.9,64047,21.2
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Hospital,"",20,240,149,29.7,4426,37.9
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Centro de Salud Familiar (CESFAM),Primario,2,24,17,28.4,483,29.2
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Otro,No Aplica,1,12,7,5.1,36,41.7
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Centro de Referencia de Salud (CRS),Secundario,1,12,12,54.7,656,0
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Posta de Salud Rural (PSR),Primario,1,12,1,3,3,91.7
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Centro Comunitario de Salud Familiar (CECOSF),Primario,1,12,3,1.7,5,75
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Hospital,Primario,1,12,1,45,45,91.7
+BS,prestaciones_cognitivas,01010916,Evaluacion de funciones cognitivas,Centro de Diagnóstico y Terapeútico,Secundario,1,12,2,1,2,83.3
+P,bajo_control_am,P3171613,Dep. severa domiciliaria Con Demencia (subgrupo),Centro de Salud Familiar (CESFAM),Primario,572,1144,1102,33.6,37001,3.7
+P,bajo_control_am,P3171613,Dep. severa domiciliaria Con Demencia (subgrupo),Posta de Salud Rural (PSR),Primario,550,1100,895,3.1,2760,18.6
+P,bajo_control_am,P3171613,Dep. severa domiciliaria Con Demencia (subgrupo),Centro Comunitario de Salud Familiar (CECOSF),Primario,196,392,347,7,2438,11.5
+P,bajo_control_am,P3171613,Dep. severa domiciliaria Con Demencia (subgrupo),Hospital,"",59,118,111,17.6,1949,5.9
+P,bajo_control_am,P3171613,Dep. severa domiciliaria Con Demencia (subgrupo),Hospital,Primario,15,30,26,20.5,534,13.3
+P,bajo_control_am,P3171613,Dep. severa domiciliaria Con Demencia (subgrupo),Consultorio General Rural (CGR),Primario,12,24,23,10.1,233,4.2
+P,bajo_control_am,P3171613,Dep. severa domiciliaria Con Demencia (subgrupo),Hospital,Terciario,7,14,13,20.6,268,7.1
+P,bajo_control_am,P3171613,Dep. severa domiciliaria Con Demencia (subgrupo),Consultorio General Urbano (CGU),Primario,2,4,4,45.8,183,0
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Centro de Salud Familiar (CESFAM),Primario,545,1090,1035,20,20713,5
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Posta de Salud Rural (PSR),Primario,398,796,612,2,1249,23.1
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Centro Comunitario de Salud Familiar (CECOSF),Primario,185,370,311,4.1,1279,15.9
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Hospital,"",55,110,106,16.2,1713,3.6
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Hospital,Primario,17,34,31,15.3,475,8.8
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Consultorio General Rural (CGR),Primario,9,18,17,4.4,74,5.6
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Hospital,Terciario,8,16,13,23.5,306,18.8
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Centro Comunitario de Salud Mental  (COSAM),Secundario,4,8,4,13,52,50
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Consultorio General Urbano (CGU),Primario,2,4,4,6.2,25,0
+P,bajo_control_sm,P6222300,Poblacion bajo control SM Demencias (incluye Alzheimer),Programa de Reparación y Atención Integral de Salud (PRAIS),No Aplica,1,2,2,2,4,0
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Centro Comunitario de Salud Mental  (COSAM),Secundario,59,118,93,8,745,21.2
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Hospital,Terciario,29,58,50,25.4,1271,13.8
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Centro de Apoyo Comunitario para Personas con Demencia,Secundario,6,12,11,42.9,472,8.3
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Hospital,"",5,10,7,2.9,20,30
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Posta de Salud Rural (PSR),Primario,4,8,4,1,4,50
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Centro de Salud Familiar (CESFAM),Primario,2,4,3,31,93,25
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Centro Comunitario de Salud Familiar (CECOSF),Primario,2,4,2,3.5,7,50
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Centro de Salud Mental,Secundario,2,4,4,67.8,271,0
+P,bajo_control_sm,P6223310,Poblacion bajo control SM Demencias - seccion hermana,Programa de Reparación y Atención Integral de Salud (PRAIS),No Aplica,1,2,1,2,2,50

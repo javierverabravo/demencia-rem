@@ -1,0 +1,89 @@
+---
+title: "Territorio"
+subtitle: "Dónde el sistema público detecta más y menos demencia"
+---
+
+```{r setup}
+#| include: false
+source(here::here("R", "_dashboard.R"))
+bre <- leer_prod("brecha_comuna.csv", colClasses = list(character = "cod_comuna"))
+bre[, cod_comuna := sprintf("%05d", as.integer(cod_comuna))]
+```
+
+::: {.ensimple}
+El color del mapa muestra la **tasa de detección**: qué parte de la demencia esperada está bajo control en cada comuna. Tonos más oscuros = más detección. La mayor parte del país está clara: detección baja, brecha alta. Los focos más oscuros (como Osorno o Punta Arenas) coinciden con comunas que tienen dispositivos del Plan Nacional de Demencia.
+:::
+
+## Mapa: tasa de detección por comuna
+
+```{r mapa}
+#| column: page
+#| fig-cap: "Tasa de detección de demencia (bajo control SM 65+ / demencia esperada). Pase el cursor para ver el detalle comunal."
+ok <- all(vapply(c("sf","leaflet","chilemapas","dplyr"), requireNamespace,
+                 logical(1), quietly = TRUE))
+if (!ok) {
+  cat("> Para ver el mapa instala: install.packages(c('sf','leaflet','chilemapas','dplyr'))")
+} else {
+  suppressPackageStartupMessages({library(sf); library(leaflet); library(chilemapas); library(dplyr)})
+  terr <- chilemapas::codigos_territoriales |>
+    dplyr::select(codigo_comuna, nombre_comuna, nombre_region) |> dplyr::distinct()
+  mapa <- chilemapas::mapa_comunas |> sf::st_as_sf()
+  m <- mapa |>
+    dplyr::left_join(as.data.frame(bre), by = c("codigo_comuna" = "cod_comuna")) |>
+    dplyr::left_join(terr, by = "codigo_comuna") |>
+    sf::st_transform(4326)
+  pal <- leaflet::colorNumeric("YlGnBu", domain = c(0, max(m$tasa_deteccion, na.rm = TRUE)),
+                               na.color = "#eeeeee")
+  etiqueta <- sprintf(
+    "<b>%s</b> (%s)<br/>Detección: <b>%s</b> · Brecha: %s<br/>Bajo control: %s · Esperados: %s<br/>Zona: %s",
+    m$nombre_comuna, m$nombre_region, pct(m$tasa_deteccion,1), pct(m$brecha,1),
+    mil(m$bajo_control_65), mil(round(m$esperados)), ifelse(is.na(m$zona),"s/i",m$zona)) |>
+    lapply(htmltools::HTML)
+  leaflet(m, options = leafletOptions(minZoom = 3)) |>
+    addProviderTiles(providers$CartoDB.PositronNoLabels) |>
+    addPolygons(fillColor = ~pal(tasa_deteccion), weight = 0.4, color = "#888",
+                fillOpacity = 0.85, label = etiqueta,
+                highlightOptions = highlightOptions(weight = 2, color = "#222", bringToFront = TRUE)) |>
+    addLegend(pal = pal, values = ~tasa_deteccion, title = "Tasa de<br/>detección",
+              labFormat = labelFormat(suffix = "", transform = function(x) round(100*x)),
+              position = "bottomright") |>
+    setView(lng = -72, lat = -38, zoom = 4)
+}
+```
+
+## El gradiente urbano / rural
+
+```{r zonas}
+res <- leer_prod("deteccion_resumen.csv")
+z <- res[grupo %in% c("urbano","mixto","rural")]
+knitr::kable(z[, .(Zona = grupo, `Tasa de detección` = pct(tasa_deteccion,1),
+                   Brecha = pct(brecha,1))], align = "lrr")
+```
+
+::: {.implica}
+Lo rural carga una **doble desventaja**: allí la demencia esperada es mayor (la prevalencia rural es más alta) **y** el registro es menor (las postas rurales dejan de registrar más períodos que los CESFAM). Reforzar la detección debería **priorizar lo rural**.
+:::
+
+## Explorar las comunas
+
+```{r tabla}
+#| column: page
+if (requireNamespace("DT", quietly = TRUE) && requireNamespace("chilemapas", quietly = TRUE)) {
+  terr <- chilemapas::codigos_territoriales |>
+    dplyr::select(codigo_comuna, nombre_comuna, nombre_region) |> dplyr::distinct()
+  tt <- merge(bre, data.table::as.data.table(terr),
+              by.x = "cod_comuna", by.y = "codigo_comuna", all.x = TRUE)
+  tt <- tt[order(-tasa_deteccion),
+           .(Región = nombre_region, Comuna = nombre_comuna, Zona = zona,
+             `Bajo control` = bajo_control_65, Esperados = round(esperados),
+             `Detección %` = round(100*tasa_deteccion,1), `Brecha %` = round(100*brecha,1))]
+  DT::datatable(tt, rownames = FALSE, filter = "top",
+                options = list(pageLength = 12, order = list(list(5, "desc"))))
+} else {
+  cat("> Para la tabla interactiva instala: install.packages('DT')")
+}
+```
+
+::: {.caveat}
+En comunas muy pequeñas el denominador público es chico y la tasa puede ser inestable (incluso >100 %). El análisis es **ecológico** (comunas, no personas) y sujeto al MAUP. Ver **[Robustez](robustez.qmd)**.
+:::

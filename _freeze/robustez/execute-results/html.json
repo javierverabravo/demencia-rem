@@ -1,0 +1,19 @@
+{
+  "hash": "90c4c5f01c97351f934f3a734379fa83",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Robustez y límites\"\nsubtitle: \"Convergencia de los modelos, supuestos y qué NO afirma este análisis\"\n---\n\n\n\n## Estado de los modelos (convergencia)\n\nUn modelo que no converge no es un modelo. Estado registrado:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nif (!is.null(est)) knitr::kable(est, align = \"ll\") else cat(\"> Sin modelo_estado.csv.\")\n```\n\n::: {.cell-output-display}\n\n\n|analisis                  |estado |moran_i   |moran_p |\n|:-------------------------|:------|:---------|:-------|\n|deteccion_espacial        |ok     |0.2318523 |0       |\n|multinivel_q6_principal   |ok     |NA        |NA      |\n|multinivel_q6_alternativo |ok     |NA        |NA      |\n\n\n:::\n:::\n\n\nLos modelos multinivel (Q6) y el análisis espacial (Q1) **convergieron / se ejecutaron correctamente**, lo que habilita interpretar sus cifras.\n\n## Caveats que se declaran siempre\n\n- **El numerador es bajo control de salud mental** (`P6`), no toda la atención de demencia. La brecha mide la visibilidad de ese subsistema, no demencia sin ningún contacto.\n- **Subregistro rural**: parte del gradiente urbano/rural es falta de registro, no solo falta de detección real (ambas son problemas).\n- **Denominador con incertidumbre**: prevalencia 10/66, proyecciones INE base 2017 (pre-Censo 2024), cobertura FONASA en tramos de 10 años.\n- **Análisis ecológico + MAUP**: las tasas comunales no se interpretan a nivel de personas; en comunas chicas la tasa es inestable.\n- **Multinivel en escala latente** (convención π²/3), por eso se reporta junto al MOR, que no depende de ese supuesto. Modelo no condicionado: dice *dónde* vive la variación, no *por qué*.\n- **Cascada (Q2)**: las etapas no anidan (registros con lógicas distintas); no es una cohorte.\n- **Equidad (Q5)**: marginales independientes (sin cruces); eje de pueblos originarios pendiente del denominador censal; eje migrante subpotenciado.\n\n## Reproducibilidad\n\nTodo el análisis se regenera con:\n\n```r\nsource(\"R/10_run_all.R\")   # 00 datos → 01 diagnóstico → 01b panel → 03 denominadores\n                           # → 06 detección → 07 cascada → 08 equidad → 09 multinivel\nquarto::quarto_render()    # este sitio (lee solo productos/)\n```\n\nEl detalle metodológico completo —de dónde sale cada cifra y por qué significa lo que decimos, por capas para tres públicos— está en la **Fundamentación estadística** (`FUNDAMENTACION_ESTADISTICA.pdf`).\n\n::: {.caveat}\nDatos REM preliminares (DEIS-MINSAL actualiza sin aviso el año en curso y el anterior). Fecha de los datos: abril 2026. Fuentes externas: INE (proyecciones, Censo 2017 urbano/rural), FONASA (inscritos APS), estudio 10/66 (prevalencia).\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
