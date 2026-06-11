@@ -1,0 +1,212 @@
+[
+  {
+    "objectID": "variacion.html",
+    "href": "variacion.html",
+    "title": "6 · ¿Dónde vive la variación?",
+    "section": "",
+    "text": "¿De qué depende que un centro registre la demencia: del centro concreto, de la comuna o de la región? Lo medimos con un modelo de tres niveles. La respuesta: depende sobre todo del centro al que te toca ir. Es, en buena parte, una lotería de establecimiento."
+  },
+  {
+    "objectID": "variacion.html#cuánto-explica-cada-nivel",
+    "href": "variacion.html#cuánto-explica-cada-nivel",
+    "title": "6 · ¿Dónde vive la variación?",
+    "section": "Cuánto explica cada nivel",
+    "text": "Cuánto explica cada nivel\n\n\nver código\nif (!is.null(mn)) {\n  pm &lt;- mn[modelo == \"region/comuna/establecimiento\"]\n  pm[, nivel2 := fcase(grepl(\"^id\", nivel), \"Establecimiento\",\n                       grepl(\"^comuna\", nivel), \"Comuna\",\n                       grepl(\"^region\", nivel), \"Región\", default = nivel)]\n  pm[, nivel2 := factor(nivel2, levels = c(\"Región\",\"Comuna\",\"Establecimiento\"))]\n  ggplot(pm, aes(vpc_pct, nivel2)) +\n    geom_col(fill = COL_PRIMARY, alpha = .85, width = .6) +\n    geom_text(aes(label = paste0(vpc_pct, \" %\")), hjust = -0.1, fontface = \"bold\") +\n    scale_x_continuous(expand = expansion(c(0,.18))) +\n    labs(x = \"% de la varianza explicada\", y = NULL) + theme_rem()\n}\n\n\n\n\n\nPartición de la varianza (VPC): qué porción de por qué unos centros registran y otros no vive en cada nivel. Modelo principal.\n\n\n\n\n\n\nver código\nif (!is.null(mn)) {\n  tt &lt;- mn[, .(Modelo = modelo, Nivel = nivel, `VPC %` = vpc_pct, MOR = MOR)]\n  knitr::kable(tt, align = \"llrr\")\n}\n\n\n\n\n\n\n\n\n\n\n\nModelo\nNivel\nVPC %\nMOR\n\n\n\n\nregion/comuna/establecimiento\nregion.(Intercept)\n8.4\n3.01\n\n\nregion/comuna/establecimiento\ncomuna.(Intercept)\n17.6\n4.93\n\n\nregion/comuna/establecimiento\nid.(Intercept)\n53.2\n15.96\n\n\nservicioSalud/comuna/establecimiento\nss.(Intercept)\n13.5\n4.19\n\n\nservicioSalud/comuna/establecimiento\ncomuna.(Intercept)\n16.4\n4.84\n\n\nservicioSalud/comuna/establecimiento\nid.(Intercept)\n50.4\n15.93"
+  },
+  {
+    "objectID": "variacion.html#cómo-leerlo",
+    "href": "variacion.html#cómo-leerlo",
+    "title": "6 · ¿Dónde vive la variación?",
+    "section": "Cómo leerlo",
+    "text": "Cómo leerlo\n\nEl establecimiento explica el 53 % de la variación, con un MOR de ~16: si mandas al mismo paciente a dos centros al azar de la misma comuna, sus probabilidades de quedar registrado difieren, en la mediana, 16 veces.\nEl territorio importa, pero menos: comuna (17,6 %) + región (8,4 %) ≈ 26 %.\nLa red administrativa pesa más que la geografía: el Servicio de Salud explica 13,5 %, más que la región (8,4 %).\n\n\nLa palanca de mayor rendimiento es centro a centro: registro, capacitación, sistemas de información y supervisión por establecimiento. Las campañas puramente regionales rinden poco; el Servicio de Salud sí es una unidad de gestión con tracción. En síntesis: gestión de establecimientos coordinada por Servicio de Salud.\n\n\nMide visibilidad administrativa (registro), no calidad clínica. Modelo logístico vacío de 3 niveles; VPC en escala latente (por eso se acompaña del MOR). Ambos modelos convergieron (ver Robustez). Detalle en la Fundamentación estadística (PDF)."
+  },
+  {
+    "objectID": "robustez.html",
+    "href": "robustez.html",
+    "title": "Robustez y límites",
+    "section": "",
+    "text": "Un modelo que no converge no es un modelo. Estado registrado:\n\n\nver código\nif (!is.null(est)) knitr::kable(est, align = \"ll\") else cat(\"&gt; Sin modelo_estado.csv.\")\n\n\n\n\n\nanalisis\nestado\nmoran_i\nmoran_p\n\n\n\n\ndeteccion_espacial\nok\n0.2318523\n0\n\n\nmultinivel_q6_principal\nok\nNA\nNA\n\n\nmultinivel_q6_alternativo\nok\nNA\nNA\n\n\n\n\n\nLos modelos multinivel (Q6) y el análisis espacial (Q1) convergieron / se ejecutaron correctamente, lo que habilita interpretar sus cifras."
+  },
+  {
+    "objectID": "robustez.html#estado-de-los-modelos-convergencia",
+    "href": "robustez.html#estado-de-los-modelos-convergencia",
+    "title": "Robustez y límites",
+    "section": "",
+    "text": "Un modelo que no converge no es un modelo. Estado registrado:\n\n\nver código\nif (!is.null(est)) knitr::kable(est, align = \"ll\") else cat(\"&gt; Sin modelo_estado.csv.\")\n\n\n\n\n\nanalisis\nestado\nmoran_i\nmoran_p\n\n\n\n\ndeteccion_espacial\nok\n0.2318523\n0\n\n\nmultinivel_q6_principal\nok\nNA\nNA\n\n\nmultinivel_q6_alternativo\nok\nNA\nNA\n\n\n\n\n\nLos modelos multinivel (Q6) y el análisis espacial (Q1) convergieron / se ejecutaron correctamente, lo que habilita interpretar sus cifras."
+  },
+  {
+    "objectID": "robustez.html#caveats-que-se-declaran-siempre",
+    "href": "robustez.html#caveats-que-se-declaran-siempre",
+    "title": "Robustez y límites",
+    "section": "Caveats que se declaran siempre",
+    "text": "Caveats que se declaran siempre\n\nEl numerador es bajo control de salud mental (P6), no toda la atención de demencia. La brecha mide la visibilidad de ese subsistema, no demencia sin ningún contacto.\nSubregistro rural: parte del gradiente urbano/rural es falta de registro, no solo falta de detección real (ambas son problemas).\nDenominador con incertidumbre: prevalencia 10/66, proyecciones INE base 2017 (pre-Censo 2024), cobertura FONASA en tramos de 10 años.\nAnálisis ecológico + MAUP: las tasas comunales no se interpretan a nivel de personas; en comunas chicas la tasa es inestable.\nMultinivel en escala latente (convención π²/3), por eso se reporta junto al MOR, que no depende de ese supuesto. Modelo no condicionado: dice dónde vive la variación, no por qué.\nCascada (Q2): las etapas no anidan (registros con lógicas distintas); no es una cohorte.\nEquidad (Q5): marginales independientes (sin cruces); eje de pueblos originarios pendiente del denominador censal; eje migrante subpotenciado."
+  },
+  {
+    "objectID": "robustez.html#reproducibilidad",
+    "href": "robustez.html#reproducibilidad",
+    "title": "Robustez y límites",
+    "section": "Reproducibilidad",
+    "text": "Reproducibilidad\nTodo el análisis se regenera con:\nsource(\"R/10_run_all.R\")   # 00 datos → 01 diagnóstico → 01b panel → 03 denominadores\n                           # → 06 detección → 07 cascada → 08 equidad → 09 multinivel\nquarto::quarto_render()    # este sitio (lee solo productos/)\nEl detalle metodológico completo —de dónde sale cada cifra y por qué significa lo que decimos, por capas para tres públicos— está en la Fundamentación estadística (FUNDAMENTACION_ESTADISTICA.pdf).\n\nDatos REM preliminares (DEIS-MINSAL actualiza sin aviso el año en curso y el anterior). Fecha de los datos: abril 2026. Fuentes externas: INE (proyecciones, Censo 2017 urbano/rural), FONASA (inscritos APS), estudio 10/66 (prevalencia)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Demencia en la red pública de salud",
+    "section": "",
+    "text": "Este sitio resume un análisis de las Series REM (registro estadístico mensual del DEIS-MINSAL) sobre la detección de demencia en personas de 65 años o más en la red pública chilena, año 2025. Antes de mirar los resultados conviene leer Cómo leer esto y el Glosario: explican qué puede y qué no puede decir este dato."
+  },
+  {
+    "objectID": "index.html#lo-esencial",
+    "href": "index.html#lo-esencial",
+    "title": "Demencia en la red pública de salud",
+    "section": "Lo esencial",
+    "text": "Lo esencial\n\n\n\n93.7 %\n\n\nBrecha de detección: personas mayores con demencia esperada que no están bajo control en salud mental pública.\n\n\n\n\n~1 de 16\n\n\nProporción de la demencia esperada que sí está bajo control (tasa de detección 6.3 %).\n\n\n\n\n1,7×\n\n\nLas comunas urbanas detectan ~1,7 veces más que las rurales. La demencia rural es la más invisible."
+  },
+  {
+    "objectID": "index.html#las-cuatro-preguntas-en-una-línea",
+    "href": "index.html#las-cuatro-preguntas-en-una-línea",
+    "title": "Demencia en la red pública de salud",
+    "section": "Las cuatro preguntas, en una línea",
+    "text": "Las cuatro preguntas, en una línea\n\nBrecha de detección — el sistema público de salud mental tiene bajo control cerca de 1 de cada 16 personas mayores con la demencia esperada. La brecha es mayor en zonas rurales.\nCascada de atención — los registros no permiten seguir el camino sospecha → diagnóstico → control → cuidado: la puerta de entrada formal casi no se registra, y la demencia se hace visible tarde.\nEquidad — la inequidad robusta es territorial (rural); el eje de pueblos originarios sugiere posible subdetección (a confirmar con datos censales).\n¿Dónde vive la variación? — que tu demencia quede registrada depende sobre todo del centro de salud al que llegas (más que de la región): una lotería de establecimiento.\n\n\n\nver código\nz &lt;- res[grupo %in% c(\"urbano\",\"mixto\",\"rural\")]\nz[, grupo := factor(grupo, levels = c(\"urbano\",\"mixto\",\"rural\"),\n                    labels = c(\"Urbano\",\"Mixto\",\"Rural\"))]\nggplot(z, aes(grupo, tasa_deteccion, fill = grupo)) +\n  geom_col(width = .6, show.legend = FALSE) +\n  geom_text(aes(label = pct(tasa_deteccion, 1)), vjust = -0.4, fontface = \"bold\") +\n  scale_fill_manual(values = c(Urbano = COL_PRIMARY, Mixto = \"#7BA7BF\", Rural = COL_ALERT)) +\n  scale_y_continuous(labels = scales::percent, expand = expansion(c(0, .15))) +\n  labs(x = NULL, y = \"Tasa de detección\") + theme_rem()\n\n\n\n\n\nTasa de detección de demencia (bajo control SM / esperados 65+), por tipo de comuna. Denominador de población pública (FONASA).\n\n\n\n\n\nLa “brecha” mide lo que el subsistema de salud mental pública no tiene bajo control formal — no es demencia totalmente sin atender (parte se maneja en atención primaria sin registro de control, en el sector privado, o no se detecta). Ver caveats completos en Robustez.\n\n\nRecorrido sugerido: Cómo leer esto → Glosario → Territorio (el mapa) → las cuatro preguntas → Robustez."
+  },
+  {
+    "objectID": "equidad.html",
+    "href": "equidad.html",
+    "title": "5 · Equidad",
+    "section": "",
+    "text": "Miramos dos ejes independientes: si la brecha es peor para las personas más pobres, y para los pueblos originarios y migrantes. La inequidad más clara y robusta es la territorial (rural); los otros ejes matizan."
+  },
+  {
+    "objectID": "equidad.html#eje-pobreza-tramo-a-de-fonasa-indigencia",
+    "href": "equidad.html#eje-pobreza-tramo-a-de-fonasa-indigencia",
+    "title": "5 · Equidad",
+    "section": "Eje pobreza (tramo A de FONASA = indigencia)",
+    "text": "Eje pobreza (tramo A de FONASA = indigencia)\n\n\nver código\nif (!is.null(pob)) {\n  pt &lt;- pob[, .(`Comunas (de - a + pobres)` = cuartil_pobreza,\n                `Indigencia media %` = tramo_a_medio,\n                `Tasa detección %` = round(100*tasa_deteccion,1),\n                `Brecha %` = round(100*brecha,1))]\n  knitr::kable(pt, align = \"lrrr\")\n}\n\n\n\n\n\n\n\n\n\n\n\nComunas (de - a + pobres)\nIndigencia media %\nTasa detección %\nBrecha %\n\n\n\n\nQ1 menos pobre\n11.0\n6.4\n93.6\n\n\nQ2\n16.5\n7.1\n92.9\n\n\nQ3\n19.5\n6.3\n93.7\n\n\nQ4 más pobre\n26.7\n4.7\n95.3\n\n\n\n\n\nNo hay una línea recta entre pobreza y detección (la correlación es prácticamente cero). Pero el cuartil más pobre detecta claramente peor (4,7 % vs 6-7 %). Como esas comunas tienden a ser rurales, esto es probablemente el mismo efecto rural —no un efecto independiente de la pobreza."
+  },
+  {
+    "objectID": "equidad.html#eje-pueblos-originarios-y-migrantes",
+    "href": "equidad.html#eje-pueblos-originarios-y-migrantes",
+    "title": "5 · Equidad",
+    "section": "Eje pueblos originarios y migrantes",
+    "text": "Eje pueblos originarios y migrantes\n\n\nver código\nif (!is.null(ori)) {\n  ot &lt;- ori[, .(Zona = zona, `Bajo control` = bajo_control,\n                `% pueblos originarios` = pct_pueblos_orig, `% migrantes` = pct_migrantes)]\n  knitr::kable(ot, align = \"lrrr\", format.args = list(big.mark = \".\"))\n}\n\n\n\n\n\nZona\nBajo control\n% pueblos originarios\n% migrantes\n\n\n\n\nPAIS\n14.514\n2.42\n0.58\n\n\nmixto\n2.065\n2.28\n0.05\n\n\nrural\n1.710\n6.67\n0.12\n\n\nurbano\n3.776\n1.59\n0.93\n\n\n\n\n\nEntre las personas con demencia bajo control, 2,4 % son de pueblos originarios a nivel país, con patrón territorial: 6,7 % en zonas rurales (donde vive más población originaria) vs 1,6 % urbano. Los migrantes son apenas 0,6 %.\n\nEl 2,4 % nacional parece bajo frente al peso poblacional de los pueblos originarios (~13 %), lo que sugiere posible subdetección — pero es una hipótesis: para confirmarla hace falta el denominador poblacional comunal (Censo 2024). Es la línea de trabajo a seguir en el eje de equidad étnica.\n\n\nLas columnas de pueblos originarios y migrantes son marginales independientes: no se cruzan entre sí ni con edad/sexo, y la autoidentificación está subregistrada. El eje migrante es poco informativo para demencia (la migración es joven; la demencia, de 65+)."
+  },
+  {
+    "objectID": "cascada.html",
+    "href": "cascada.html",
+    "title": "2 · Cascada de atención",
+    "section": "",
+    "text": "Lo ideal sería seguir el camino: alguien sospecha demencia → se diagnostica → ingresa a un programa → queda bajo control → si avanza, recibe cuidado en casa. Pero el dato no permite seguir ese camino: cada paso vive en un registro distinto y los números no calzan."
+  },
+  {
+    "objectID": "cascada.html#las-cinco-etapas-país",
+    "href": "cascada.html#las-cinco-etapas-país",
+    "title": "2 · Cascada de atención",
+    "section": "Las cinco etapas (país)",
+    "text": "Las cinco etapas (país)\n\n\nver código\nif (!is.null(cas)) {\n  ct &lt;- cas[, .(Etapa = etapa, País = PAIS, Urbano = urbano, Rural = rural, Mixto = mixto)]\n  knitr::kable(ct, align = \"lrrrr\", format.args = list(big.mark = \".\"))\n}\n\n\n\n\n\n\n\n\n\n\n\n\nEtapa\nPaís\nUrbano\nRural\nMixto\n\n\n\n\n1. Sospecha (A06 consultorías)\n325\n57\n89\n49\n\n\n2. Diagnóstico (A06 consultorías)\n467\n98\n114\n72\n\n\n3. Ingreso SM (A05, flujo anual)\n15.117\n3.645\n1.243\n2.390\n\n\n4. Bajo control (P6, stock dic)\n14.514\n3.776\n1.710\n2.065\n\n\n5. Domiciliaria dep. severa c/demencia (P3, stock dic)\n23.209\n5.177\n3.009\n4.461\n\n\n\n\n\n\n\nver código\nif (!is.null(cas)) {\n  g &lt;- cas[order(etapa_orden), .(etapa, PAIS)]\n  g[, etapa := factor(etapa, levels = rev(etapa))]\n  ggplot(g, aes(PAIS, etapa)) +\n    geom_col(fill = COL_PRIMARY, alpha = .85, width = .65) +\n    geom_text(aes(label = formatC(PAIS, format=\"d\", big.mark=\".\")), hjust = -0.1) +\n    scale_x_continuous(expand = expansion(c(0,.2))) +\n    labs(x = \"Personas / registros\", y = NULL) + theme_rem()\n}\n\n\n\n\n\nMagnitud de cada etapa (país). No es un embudo: las etapas no descienden de mayor a menor."
+  },
+  {
+    "objectID": "cascada.html#el-hallazgo-los-registros-no-forman-un-embudo",
+    "href": "cascada.html#el-hallazgo-los-registros-no-forman-un-embudo",
+    "title": "2 · Cascada de atención",
+    "section": "El hallazgo: los registros no forman un embudo",
+    "text": "El hallazgo: los registros no forman un embudo\nSi fuera un embudo, cada paso debería ser menor que el anterior. No lo es: la sospecha y el diagnóstico formales son minúsculos (325 y 467 en todo el país) frente a 15 mil ingresos y 14 mil bajo control, y el cuidado domiciliario (23 mil) supera al bajo control de salud mental.\n¿Por qué? Porque cada etapa mide algo distinto: la sospecha es una columna marginal de consultorías (muy subutilizada); el ingreso es un flujo anual; el bajo control, un stock; lo domiciliario, un registro de dependencia severa que capta casos avanzados. No son una misma cohorte seguida en el tiempo.\n\nDos cosas accionables: (1) para monitorear la ruta de la demencia hay que fortalecer el registro de sospecha y diagnóstico en atención primaria, hoy casi inexistente; (2) que lo domiciliario supere al bajo control sugiere que muchas personas se hacen visibles solo cuando ya hay dependencia severa — una detección tardía.\n\n\nResultado de carácter limitante (de los valiosos de declarar): el REM, tal como está, no permite reconstruir la ruta de atención de la demencia. Etapas en unidades distintas (flujo vs stock) y poblaciones distintas; no son trayectorias individuales."
+  },
+  {
+    "objectID": "deteccion.html",
+    "href": "deteccion.html",
+    "title": "1 · Brecha de detección",
+    "section": "",
+    "text": "La demencia tiene una frecuencia conocida por edad, así que se puede estimar cuántas personas mayores con demencia se esperan en cada comuna. De todas ellas, solo cerca de 1 de cada 16 está bajo control en la salud mental pública. La diferencia —la brecha— es del 93.7 %."
+  },
+  {
+    "objectID": "deteccion.html#la-cuenta-en-una-resta",
+    "href": "deteccion.html#la-cuenta-en-una-resta",
+    "title": "1 · Brecha de detección",
+    "section": "La cuenta, en una resta",
+    "text": "La cuenta, en una resta\nBrecha = 1 − ( personas bajo control / personas esperadas )\n       = 1 − ( 13.114 / 205.843 )  ≈  93,7 %\n\nNumerador: 13.114 personas de 65+ bajo control SM por demencia (corte diciembre, atención primaria + especialidad).\nDenominador: demencia esperada en la población pública (FONASA), 205.843 personas. Usar la población pública —y no la total— evita contar a quienes están en isapres y nunca usan la red pública."
+  },
+  {
+    "objectID": "deteccion.html#por-qué-el-denominador-correcto-importa",
+    "href": "deteccion.html#por-qué-el-denominador-correcto-importa",
+    "title": "1 · Brecha de detección",
+    "section": "Por qué el denominador correcto importa",
+    "text": "Por qué el denominador correcto importa\n\n\nver código\nd &lt;- data.table(\n  Denominador = c(\"Población total (INE)\", \"Población pública (FONASA)\"),\n  `Esperados 65+` = c(244338, 205843),\n  `Tasa detección` = c(\"5,4 %\", \"6,3 %\"),\n  Brecha = c(\"94,6 %\", \"93,7 %\"))\nknitr::kable(d, align = \"lrrr\")\n\n\n\n\n\nDenominador\nEsperados 65+\nTasa detección\nBrecha\n\n\n\n\nPoblación total (INE)\n244338\n5,4 %\n94,6 %\n\n\nPoblación pública (FONASA)\n205843\n6,3 %\n93,7 %\n\n\n\n\n\nAl limpiar el denominador no solo se corrige la cifra (de 94,6 % a 93,7 %): también se vuelve justa la comparación entre territorios y emerge la señal territorial (ver ¿Dónde vive la variación? y Territorio)."
+  },
+  {
+    "objectID": "deteccion.html#distribución-de-la-detección-entre-comunas",
+    "href": "deteccion.html#distribución-de-la-detección-entre-comunas",
+    "title": "1 · Brecha de detección",
+    "section": "Distribución de la detección entre comunas",
+    "text": "Distribución de la detección entre comunas\n\n\nver código\nb &lt;- bre[esperados &gt; 0 & tasa_deteccion &lt;= 0.30]\nggplot(b, aes(tasa_deteccion)) +\n  geom_histogram(bins = 30, fill = COL_PRIMARY, alpha = .85) +\n  geom_vline(xintercept = pais$tasa_deteccion, color = COL_ALERT, linewidth = 1, linetype = 2) +\n  annotate(\"text\", x = pais$tasa_deteccion, y = Inf, vjust = 1.5, hjust = -0.05,\n           label = \"país\", color = COL_ALERT) +\n  scale_x_continuous(labels = scales::percent) +\n  labs(x = \"Tasa de detección comunal\", y = \"Nº de comunas\") + theme_rem()\n\n\n\n\n\nDistribución de la tasa de detección comunal (recortada a 30 % para legibilidad).\n\n\n\n\n\nLa brecha del 93,7 % marca un punto de partida medible, recalculable cada año con el mismo código. Las palancas que el análisis respalda: priorizar lo rural y extender los dispositivos del Plan Nacional de Demencia, que se asocian a mayor detección.\n\n\nEl numerador es bajo control de salud mental, no toda la atención de demencia. La brecha mide la visibilidad de ese subsistema, no demencia sin ningún contacto. Detalle en Robustez y en la Fundamentación estadística (PDF)."
+  },
+  {
+    "objectID": "glosario.html",
+    "href": "glosario.html",
+    "title": "Glosario",
+    "section": "",
+    "text": "Brecha de detección\n\nTécnico: 1 − (personas bajo control SM por demencia 65+ / demencia esperada 65+), por comuna.\n\n\nEn simple: de toda la demencia que se espera en las personas mayores, qué parte no está siendo seguida por la salud mental pública.\n\nPoblación bajo control\n\nTécnico: stock de personas en seguimiento por un programa a una fecha de corte (aquí, diciembre).\n\n\nEn simple: cuánta gente está hoy siendo atendida y seguida por ese problema.\n\nDemencia esperada\n\nTécnico: Σ (población por tramo de edad × prevalencia de demencia del tramo), ajustada urbano/rural, escalada a la población pública (FONASA).\n\n\nEn simple: cuántas personas mayores con demencia debería haber en una comuna, según su edad y su tamaño.\n\nPrevalencia\n\nTécnico: proporción de una población que tiene la condición en un momento dado.\n\n\nEn simple: qué tan común es la demencia; aquí, cuántos de cada 100 adultos mayores la tienen (sube mucho con la edad).\n\nDenominador público (FONASA)\n\nTécnico: población inscrita en atención primaria pública, usada como base en vez de la población total.\n\n\nEn simple: contamos solo a quienes el sistema público debe atender (no a quienes están en isapres), para que la comparación sea justa.\n\nSubregistro\n\nTécnico: combinaciones establecimiento-período esperadas sin dato, en centros que sí deberían registrar.\n\n\nEn simple: actividad que ocurrió pero no quedó anotada. No es lo mismo que “no pasó nada”.\n\nCero estructural\n\nTécnico: ausencia de registro porque el establecimiento no realiza ese programa por diseño.\n\n\nEn simple: un centro que “no registra” simplemente porque eso no es lo suyo (no es una falla).\n\nVPC (partición de varianza)\n\nTécnico: fracción de la varianza total (escala latente) atribuible a un nivel (establecimiento, comuna, región).\n\n\nEn simple: de todo lo que hace que unos centros registren y otros no, qué porción se explica por el centro, por la comuna o por la región.\n\nMOR (Median Odds Ratio)\n\nTécnico: exp(√(2σ²)·0,6745); mediana del cociente de odds entre dos unidades al azar de distinto grupo.\n\n\nEn simple: si mandas al mismo paciente a dos centros al azar, cuántas veces difiere su probabilidad de quedar registrado.\n\nMoran / LISA\n\nTécnico: índice de autocorrelación espacial global (Moran) y local (LISA, clústeres alto-alto / bajo-bajo).\n\n\nEn simple: mide si las comunas vecinas se parecen (si la detección se agrupa en el mapa) y dónde están esos grupos.\n\nCascada de atención\n\nTécnico: secuencia sospecha → diagnóstico → ingreso → bajo control → domiciliaria.\n\n\nEn simple: el camino ideal de una persona por el sistema; aquí vemos que el dato no permite seguirlo."
+  },
+  {
+    "objectID": "metodologia.html",
+    "href": "metodologia.html",
+    "title": "Cómo leer esto",
+    "section": "",
+    "text": "Del REM (Resumen Estadístico Mensual), el registro con que cada establecimiento de la red pública de salud reporta su actividad al DEIS-MINSAL. No es una encuesta ni un censo de personas: es lo que los centros anotan mes a mes. A eso le sumamos dos referencias externas:\n\nProyecciones de población del INE (cuántas personas mayores hay en cada comuna) y la prevalencia de demencia por edad (estudio 10/66 en Chile), para estimar cuánta demencia se espera.\nInscritos en FONASA / atención primaria, para usar como denominador la población que realmente atiende el sistema público (no la que está en isapres).\n\nTodas las cifras son reproducibles: salen de correr el código del proyecto, y este sitio solo lee las tablas finales ya calculadas."
+  },
+  {
+    "objectID": "metodologia.html#de-dónde-salen-estas-cifras",
+    "href": "metodologia.html#de-dónde-salen-estas-cifras",
+    "title": "Cómo leer esto",
+    "section": "",
+    "text": "Del REM (Resumen Estadístico Mensual), el registro con que cada establecimiento de la red pública de salud reporta su actividad al DEIS-MINSAL. No es una encuesta ni un censo de personas: es lo que los centros anotan mes a mes. A eso le sumamos dos referencias externas:\n\nProyecciones de población del INE (cuántas personas mayores hay en cada comuna) y la prevalencia de demencia por edad (estudio 10/66 en Chile), para estimar cuánta demencia se espera.\nInscritos en FONASA / atención primaria, para usar como denominador la población que realmente atiende el sistema público (no la que está en isapres).\n\nTodas las cifras son reproducibles: salen de correr el código del proyecto, y este sitio solo lee las tablas finales ya calculadas."
+  },
+  {
+    "objectID": "metodologia.html#lo-que-este-dato-sí-puede-decir",
+    "href": "metodologia.html#lo-que-este-dato-sí-puede-decir",
+    "title": "Cómo leer esto",
+    "section": "Lo que este dato SÍ puede decir",
+    "text": "Lo que este dato SÍ puede decir\n\nCuántas personas mayores con demencia están bajo control en la red pública y cómo se compara con lo esperado (la brecha).\nCómo varía eso entre territorios (comunas urbanas/rurales, regiones) y entre establecimientos.\nDónde el registro es más débil (subregistro) y dónde el Plan Nacional de Demencia se asocia a mejor detección."
+  },
+  {
+    "objectID": "metodologia.html#lo-que-este-dato-no-puede-decir",
+    "href": "metodologia.html#lo-que-este-dato-no-puede-decir",
+    "title": "Cómo leer esto",
+    "section": "Lo que este dato NO puede decir",
+    "text": "Lo que este dato NO puede decir\n\n\n\n\n\n\n\nNo mide prevalencia real: solo ve a quien contacta el sistema público y queda registrado. La demencia atendida en el sector privado, o en la familia, o no detectada, no aparece.\nNo sigue a personas: son conteos agregados por establecimiento y mes, no trayectorias individuales.\nNo mide calidad clínica ni resultados de salud (progresión, mortalidad): mide registro y seguimiento administrativo.\nNo distingue “no hubo actividad” de “hubo y no se registró”: por eso hablamos de subregistro, no de ausencia del problema.\nLas desagregaciones (sexo, edad, pueblos originarios, migrantes) son columnas marginales independientes: no se pueden cruzar entre sí."
+  },
+  {
+    "objectID": "metodologia.html#cómo-está-escrito-este-sitio",
+    "href": "metodologia.html#cómo-está-escrito-este-sitio",
+    "title": "Cómo leer esto",
+    "section": "Cómo está escrito este sitio",
+    "text": "Cómo está escrito este sitio\nCada página tiene una mirada en simple (sin tecnicismos) y, donde corresponde, qué implica para las decisiones. El detalle estadístico completo —de dónde sale cada número y por qué significa lo que decimos— está en el documento Fundamentación estadística (PDF descargable), escrito en capas para sociedad civil, tomadores de decisiones y academia.\n\nLee este dato como un termómetro del registro público: dice cuánto ve y sigue formalmente el sistema, dónde menos, y qué palanca (el centro, la comuna, el programa) puede mover la aguja. No es una acusación a nadie; es un mapa para priorizar."
+  },
+  {
+    "objectID": "territorio.html",
+    "href": "territorio.html",
+    "title": "Territorio",
+    "section": "",
+    "text": "El color del mapa muestra la tasa de detección: qué parte de la demencia esperada está bajo control en cada comuna. Tonos más oscuros = más detección. La mayor parte del país está clara: detección baja, brecha alta. Los focos más oscuros (como Osorno o Punta Arenas) coinciden con comunas que tienen dispositivos del Plan Nacional de Demencia."
+  },
+  {
+    "objectID": "territorio.html#mapa-tasa-de-detección-por-comuna",
+    "href": "territorio.html#mapa-tasa-de-detección-por-comuna",
+    "title": "Territorio",
+    "section": "Mapa: tasa de detección por comuna",
+    "text": "Mapa: tasa de detección por comuna\n\n\nver código\nok &lt;- all(vapply(c(\"sf\",\"leaflet\",\"chilemapas\",\"dplyr\"), requireNamespace,\n                 logical(1), quietly = TRUE))\nif (!ok) {\n  cat(\"&gt; Para ver el mapa instala: install.packages(c('sf','leaflet','chilemapas','dplyr'))\")\n} else {\n  suppressPackageStartupMessages({library(sf); library(leaflet); library(chilemapas); library(dplyr)})\n  terr &lt;- chilemapas::codigos_territoriales |&gt;\n    dplyr::select(codigo_comuna, nombre_comuna, nombre_region) |&gt; dplyr::distinct()\n  mapa &lt;- chilemapas::mapa_comunas |&gt; sf::st_as_sf()\n  m &lt;- mapa |&gt;\n    dplyr::left_join(as.data.frame(bre), by = c(\"codigo_comuna\" = \"cod_comuna\")) |&gt;\n    dplyr::left_join(terr, by = \"codigo_comuna\") |&gt;\n    sf::st_transform(4326)\n  pal &lt;- leaflet::colorNumeric(\"YlGnBu\", domain = c(0, max(m$tasa_deteccion, na.rm = TRUE)),\n                               na.color = \"#eeeeee\")\n  etiqueta &lt;- sprintf(\n    \"&lt;b&gt;%s&lt;/b&gt; (%s)&lt;br/&gt;Detección: &lt;b&gt;%s&lt;/b&gt; · Brecha: %s&lt;br/&gt;Bajo control: %s · Esperados: %s&lt;br/&gt;Zona: %s\",\n    m$nombre_comuna, m$nombre_region, pct(m$tasa_deteccion,1), pct(m$brecha,1),\n    mil(m$bajo_control_65), mil(round(m$esperados)), ifelse(is.na(m$zona),\"s/i\",m$zona)) |&gt;\n    lapply(htmltools::HTML)\n  leaflet(m, options = leafletOptions(minZoom = 3)) |&gt;\n    addProviderTiles(providers$CartoDB.PositronNoLabels) |&gt;\n    addPolygons(fillColor = ~pal(tasa_deteccion), weight = 0.4, color = \"#888\",\n                fillOpacity = 0.85, label = etiqueta,\n                highlightOptions = highlightOptions(weight = 2, color = \"#222\", bringToFront = TRUE)) |&gt;\n    addLegend(pal = pal, values = ~tasa_deteccion, title = \"Tasa de&lt;br/&gt;detección\",\n              labFormat = labelFormat(suffix = \"\", transform = function(x) round(100*x)),\n              position = \"bottomright\") |&gt;\n    setView(lng = -72, lat = -38, zoom = 4)\n}\n\n\n\n\nTasa de detección de demencia (bajo control SM 65+ / demencia esperada). Pase el cursor para ver el detalle comunal."
+  },
+  {
+    "objectID": "territorio.html#el-gradiente-urbano-rural",
+    "href": "territorio.html#el-gradiente-urbano-rural",
+    "title": "Territorio",
+    "section": "El gradiente urbano / rural",
+    "text": "El gradiente urbano / rural\n\n\nver código\nres &lt;- leer_prod(\"deteccion_resumen.csv\")\nz &lt;- res[grupo %in% c(\"urbano\",\"mixto\",\"rural\")]\nknitr::kable(z[, .(Zona = grupo, `Tasa de detección` = pct(tasa_deteccion,1),\n                   Brecha = pct(brecha,1))], align = \"lrr\")\n\n\n\n\n\nZona\nTasa de detección\nBrecha\n\n\n\n\nmixto\n4.4 %\n95.6 %\n\n\nrural\n4.9 %\n95.1 %\n\n\nurbano\n8.5 %\n91.5 %\n\n\n\n\n\n\nLo rural carga una doble desventaja: allí la demencia esperada es mayor (la prevalencia rural es más alta) y el registro es menor (las postas rurales dejan de registrar más períodos que los CESFAM). Reforzar la detección debería priorizar lo rural."
+  },
+  {
+    "objectID": "territorio.html#explorar-las-comunas",
+    "href": "territorio.html#explorar-las-comunas",
+    "title": "Territorio",
+    "section": "Explorar las comunas",
+    "text": "Explorar las comunas\n\n\nver código\nif (requireNamespace(\"DT\", quietly = TRUE) && requireNamespace(\"chilemapas\", quietly = TRUE)) {\n  terr &lt;- chilemapas::codigos_territoriales |&gt;\n    dplyr::select(codigo_comuna, nombre_comuna, nombre_region) |&gt; dplyr::distinct()\n  tt &lt;- merge(bre, data.table::as.data.table(terr),\n              by.x = \"cod_comuna\", by.y = \"codigo_comuna\", all.x = TRUE)\n  tt &lt;- tt[order(-tasa_deteccion),\n           .(Región = nombre_region, Comuna = nombre_comuna, Zona = zona,\n             `Bajo control` = bajo_control_65, Esperados = round(esperados),\n             `Detección %` = round(100*tasa_deteccion,1), `Brecha %` = round(100*brecha,1))]\n  DT::datatable(tt, rownames = FALSE, filter = \"top\",\n                options = list(pageLength = 12, order = list(list(5, \"desc\"))))\n} else {\n  cat(\"&gt; Para la tabla interactiva instala: install.packages('DT')\")\n}\n\n\n\n\n\n\n\nEn comunas muy pequeñas el denominador público es chico y la tasa puede ser inestable (incluso &gt;100 %). El análisis es ecológico (comunas, no personas) y sujeto al MAUP. Ver Robustez."
+  }
+]
