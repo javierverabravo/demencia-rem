@@ -4,6 +4,8 @@ project:
   render:
     - "*.qmd"
     - "!articulo.qmd"       # informe PDF aparte; no entra al sitio web
+  resources:
+    - FUNDAMENTACION_ESTADISTICA.pdf   # se copia a docs/ para descarga desde el sitio
 
 website:
   title: "Demencia en la red pública"
@@ -33,6 +35,13 @@ website:
             file: variacion.qmd
       - text: "Robustez"
         file: robustez.qmd
+    right:
+      - text: "📄 Documento técnico (PDF)"
+        href: FUNDAMENTACION_ESTADISTICA.pdf
+        target: _blank
+      - icon: github
+        href: https://github.com/javierverabravo/demencia-rem
+        aria-label: GitHub
   page-footer:
     left: "Datos REM (DEIS-MINSAL), preliminares 2025. Denominadores INE + FONASA. Proyecto reproducible."
     right: "Junio 2026"

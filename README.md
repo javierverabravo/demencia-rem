@@ -1,8 +1,14 @@
 # Demencia en la red pública de salud · Series REM Chile
 
+### 🔗 [**Ver el dashboard en vivo →**](https://javierverabravo.github.io/demencia-rem/)
+
+📄 [**Fundamentación estadística (PDF)**](FUNDAMENTACION_ESTADISTICA.pdf) · 🗺️ [Mapa territorial](https://javierverabravo.github.io/demencia-rem/territorio.html) · 📊 [Las 4 preguntas](https://javierverabravo.github.io/demencia-rem/deteccion.html)
+
 > Análisis de la detección, atención y carga de demencia en la red pública chilena, en población general con énfasis en personas mayores (65+), con mirada territorial (urbano/rural, comunal) e identificación de focos. Replica la metodología validada del proyecto de participación ciudadana (REM-A19b) mediante las skills `rem-datos`, `rem-estadistica` y `rem-pipeline-quarto`.
 >
-> **Estado:** scaffold inicial (junio 2026). Fase 0 pendiente. **Mover esta carpeta a su ubicación definitiva antes de trabajar.**
+> **Estado:** Fases 0-6 completas (junio 2026). Dashboard publicado en GitHub Pages. Análisis reproducible de punta a punta (`source("R/10_run_all.R")` + `quarto publish gh-pages`).
+
+**Hallazgos principales:** brecha de detección de demencia 65+ = **93,7%** (1 de cada 16 personas esperadas está bajo control SM público); la detección urbana es ~1,7× la rural; la variación es **predominantemente institucional** (el establecimiento explica el 53% — MOR 16); donde está el Plan Nacional de Demencia (Osorno, Punta Arenas) la detección sube. Detalle y caveats en el [dashboard](https://javierverabravo.github.io/demencia-rem/) y la [fundamentación](FUNDAMENTACION_ESTADISTICA.pdf).
 
 ---
 

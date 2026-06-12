@@ -36,5 +36,7 @@ Thumbs.db
 !crosswalk/*.csv
 !crosswalk/*.md
 !productos/.gitkeep
+# documento técnico distribuible (sí se versiona, pese a *.pdf de arriba)
+!FUNDAMENTACION_ESTADISTICA.pdf
 
 **/*.quarto_ipynb

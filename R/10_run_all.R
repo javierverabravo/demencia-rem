@@ -18,6 +18,7 @@ scripts <- c(
   "03_denominadores.R",   # INE 65+ + demencia esperada       [Fase 4 - ACTIVO]
   "05_indicadores.R",     # tasas con denominador             [Fase 5 - pendiente]
   "06_analisis_deteccion.R", # Q1 brecha + LISA               [Fase 5 - ACTIVO]
+  "06b_centros_geo.R",       # capa de centros para mapa de calor [Fase 6 - ACTIVO]
   "07_analisis_cascada.R",   # Q2 cascada                     [Fase 5 - ACTIVO]
   "08_analisis_equidad.R",   # Q5 equidad                     [Fase 5 - ACTIVO]
   "09_sintesis.R"            # Q6 multinivel (barrera registro) [Fase 5 - ACTIVO]
