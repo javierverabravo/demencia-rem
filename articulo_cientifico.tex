@@ -1,0 +1,715 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  spanish,
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off]{babel}
+\else
+\usepackage[bidi=default,shorthands=off]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Brecha de detección de demencia y priorización de establecimientos en la red pública chilena: un análisis multinivel de los registros REM 2025},
+  pdfauthor={Javier Vera Bravo},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Brecha de detección de demencia y priorización de
+establecimientos en la red pública chilena: un análisis multinivel de
+los registros REM 2025}
+\author{Javier Vera Bravo}
+\date{2026-06-25}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Tabla de contenidos}
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
+\subsection*{Resumen}\label{resumen}
+\addcontentsline{toc}{subsection}{Resumen}
+
+\textbf{Antecedentes.} La demencia tiene una frecuencia conocida por
+edad, pero la fracción efectivamente detectada y bajo seguimiento en los
+sistemas públicos es baja y heterogénea. En Chile no existían
+estimaciones comunales de la brecha de detección basadas en el registro
+administrativo con un denominador de prevalencia acompañado de
+incertidumbre.
+
+\textbf{Objetivos.} (1) Cuantificar la brecha de detección de demencia
+en personas de 65 años o más en la red pública chilena y su gradiente
+territorial; (2) determinar en qué nivel del sistema (establecimiento,
+comuna, región) reside la variación del registro; y (3) derivar, a
+partir de ese análisis, un indicador de priorización de establecimientos
+para focalizar la intervención.
+
+\textbf{Métodos.} Estudio ecológico de fuentes administrativas (Series
+REM 2025, DEIS-MINSAL). El numerador es la población bajo control de
+salud mental por demencia (65+, corte de diciembre); el denominador, la
+prevalencia esperada por banda etaria aplicada a las proyecciones de
+población del INE y escalada a la población inscrita en FONASA. La
+incertidumbre del denominador se propagó por simulación. La partición de
+la varianza del registro se estimó con un modelo logístico multinivel de
+interceptos aleatorios (\texttt{glmmTMB}), reportando VPC y \emph{Median
+Odds Ratio} (MOR). El puntaje de priorización combina el efecto
+aleatorio por establecimiento con el volumen de población inscrita.
+
+\textbf{Resultados.} La brecha nacional fue de 93.7 \% (sensibilidad 92
+\%--94 \% según la curva de prevalencia). La detección urbana casi
+duplica la rural. La variación del registro es predominantemente
+institucional: el establecimiento explica el 53.2\% de la varianza (MOR
+15.96).
+
+\textbf{Conclusiones.} La mayor parte de la demencia esperada no está
+bajo seguimiento de la salud mental pública, con una desventaja rural
+marcada; la palanca de intervención es el establecimiento, coordinado
+por Servicio de Salud. El indicador de priorización traduce el hallazgo
+en una lista accionable de centros.
+
+\emph{Palabras clave:} demencia; brecha de detección; epidemiología de
+servicios; análisis multinivel; atención primaria; Chile.
+
+\section{Introducción}\label{introducciuxf3n}
+
+La demencia es una de las principales causas de dependencia en personas
+mayores y su prevalencia crece de forma aproximadamente exponencial con
+la edad (Fuentes y Albala 2014; {Llibre Rodriguez et~al.} 2008). A
+escala global, una fracción mayoritaria de los casos no está
+diagnosticada: el World Alzheimer Report 2021 estima cerca de tres de
+cada cuatro casos sin diagnóstico, proporción que aumenta en países de
+ingreso bajo y medio (Alzheimer's Disease International 2021). La
+distancia entre la prevalencia esperada y los casos efectivamente
+identificados ---la \emph{brecha de detección}--- es, por tanto, un
+problema sistémico y no anecdótico (GBD 2019 Dementia Forecasting
+Collaborators 2022).
+
+En Chile, la prevalencia de demencia en población de 60 años o más se ha
+estimado en torno al 7\% a partir de una encuesta nacional por tamizaje
+(Fuentes y Albala 2014), y el Ministerio de Salud ha incorporado un
+indicador oficial de cobertura que compara las personas bajo control por
+demencia contra las esperadas por prevalencia (Ministerio de Salud de
+Chile 2024). Sin embargo, hasta donde alcanza esta revisión, no se había
+cuantificado esa brecha a nivel \textbf{comunal} usando el registro
+administrativo REM contra un denominador de prevalencia con
+incertidumbre propagada, ni se había determinado en qué nivel del
+sistema reside la variación del registro.
+
+Este trabajo aborda ese vacío con tres objetivos: cuantificar la brecha
+y su gradiente territorial; particionar la varianza del registro entre
+establecimiento, comuna y región; y derivar un indicador de priorización
+de establecimientos que traduzca el hallazgo en acción de gestión.
+
+\section{Métodos}\label{muxe9todos}
+
+\subsection{Diseño y fuentes de
+datos}\label{diseuxf1o-y-fuentes-de-datos}
+
+Estudio ecológico de corte transversal sobre registros administrativos.
+La fuente primaria son las Series REM 2025 del Departamento de
+Estadísticas e Información de Salud (DEIS-MINSAL), datos preliminares.
+Se complementan con las proyecciones de población del INE (base 2017),
+los inscritos validados de FONASA en atención primaria, y el maestro de
+establecimientos de salud (datos.gob.cl, licencia CC0). El cruce
+territorial REM--INE y REM--maestro alcanzó el 100\% de las comunas y
+establecimientos.
+
+\subsection{Definición de caso}\label{definiciuxf3n-de-caso}
+
+El universo de demencia se definió mediante un \emph{crosswalk} curado y
+verificado código a código contra los diccionarios y manuales REM. El
+numerador de la brecha es la población bajo control de salud mental por
+``Demencias (incluye Alzheimer)'' en personas de 65 años o más, sumando
+atención primaria (\texttt{P6222300}) y especialidad
+(\texttt{P6223310}), verificadas como niveles de atención distintos del
+mismo diagnóstico. Se utilizó un solo corte (diciembre), por tratarse de
+un \emph{stock} (prevalencia), evitando el doble conteo de los dos
+cortes semestrales.
+
+\subsection{Denominador y triangulación de la
+prevalencia}\label{denominador-y-triangulaciuxf3n-de-la-prevalencia}
+
+La demencia esperada por comuna se construyó como
+
+\[E_c = \kappa_c \sum_b P_{cb}\,\pi_b,\]
+
+donde \(P_{cb}\) es la población de la comuna \(c\) en la banda etaria
+\(b\) (INE), \(\pi_b\) la prevalencia por banda (Fuentes y Albala 2014)
+y \(\kappa_c\) la cobertura pública (inscritos FONASA 60+ sobre
+población INE 60+). El uso de la población pública corrige el sesgo de
+contabilizar a beneficiarios de seguros privados que no usan la red
+pública.
+
+Dado que la prevalencia proviene de una sola encuesta por tamizaje, su
+efecto sobre la brecha se evaluó por triangulación: la curva original,
+una versión suavizada con monotonía impuesta, y un espacio para una
+curva externa modelada (GBD 2019 Dementia Forecasting Collaborators
+2022). La incertidumbre se propagó por simulación de Monte Carlo sobre
+la prevalencia por banda, reportando un intervalo del 95\% para la
+brecha nacional.
+
+\subsection{Análisis espacial}\label{anuxe1lisis-espacial}
+
+La autocorrelación espacial de la tasa de detección comunal se evaluó
+con el índice de Moran global y estadísticos locales (LISA), con
+contigüidad tipo \emph{queen} y pesos estandarizados por fila. El
+análisis es ecológico y está sujeto al problema de la unidad areal
+modificable (MAUP).
+
+\subsection{Modelo multinivel}\label{modelo-multinivel}
+
+La variación del registro se modeló como la probabilidad de que un
+establecimiento de atención primaria activo registre actividad de
+demencia en un mes dado (desenlace binario; panel establecimiento ×
+mes). Se ajustó un modelo logístico de interceptos aleatorios de tres
+niveles (Snijders y Bosker 2012; {Brooks et~al.} 2017):
+
+\[\operatorname{logit}\big(\Pr(Y_{ijk}=1)\big) = \beta_0 + u_k + u_{jk} + u_{ijk}, \qquad u \sim \mathcal{N}(0,\sigma^2),\]
+
+con \(k\) región, \(jk\) comuna e \(ijk\) establecimiento. La proporción
+de varianza por nivel (VPC) se calculó en la escala latente, fijando la
+varianza de nivel inferior en \(\pi^2/3\) (Goldstein et~al. 2002):
+
+\[\text{VPC}_{\text{nivel}} = \frac{\sigma^2_{\text{nivel}}}{\sum_l \sigma^2_l + \pi^2/3}.\]
+
+Como medida robusta a esa convención se reportó el \emph{Median Odds
+Ratio} ({Merlo et~al.} 2006):
+
+\[\text{MOR} = \exp\!\big(\sqrt{2\,\sigma^2}\,\Phi^{-1}(0{,}75)\big), \qquad \Phi^{-1}(0{,}75)\approx 0{,}6745.\]
+
+Se ajustó un modelo alternativo reemplazando región por Servicio de
+Salud. Ambos modelos son especificaciones no anidadas; el VPC, al ser un
+modelo no condicionado, indica \emph{dónde} vive la variación, no
+\emph{por qué} (Mood 2010). La convergencia se verificó en cada ajuste.
+
+\subsection{Puntaje de priorización de
+establecimientos}\label{puntaje-de-priorizaciuxf3n-de-establecimientos}
+
+El indicador operativo de la herramienta de gestión combina, por
+establecimiento \(i\):
+
+\[S_i = 100 \cdot \tilde d_i \cdot \tilde v_i \cdot w_i, \qquad d_i = \max(0,\,-\hat u_i), \quad v_i = \log(1+\text{inscritos}_i),\]
+
+donde \(\hat u_i\) es el efecto aleatorio del establecimiento (déficit
+de registro ajustado por su contexto comunal y regional), \(v_i\) el
+volumen de población expuesta, \(\tilde{\cdot}\) la normalización
+min-max, y \(w_i\) un ponderador de equidad territorial (realce rural).
+El puntaje prioriza centros que podrían registrar mucho más y atienden a
+mucha gente. El desenlace es \textbf{visibilidad administrativa del
+registro, no calidad clínica}.
+
+\subsection{Reproducibilidad y gobernanza de
+datos}\label{reproducibilidad-y-gobernanza-de-datos}
+
+El análisis es reproducible de punta a punta
+(\texttt{source("R/10\_run\_all.R")}), con entorno computacional fijado
+(\texttt{renv}). Los datos crudos no se redistribuyen y conservan su
+licencia de origen. Se aplicó un resguardo de celdas pequeñas (supresión
+de tasas con menos de cinco personas) para evitar reidentificación; las
+desagregaciones de pueblos originarios y migrantes se reportan solo
+agregadas. El estudio usa datos administrativos agregados y públicos.
+
+\section{Resultados}\label{resultados}
+
+\subsection{Brecha de detección y sensibilidad del
+denominador}\label{brecha-de-detecciuxf3n-y-sensibilidad-del-denominador}
+
+La brecha nacional de detección fue de 93.7 \% (tasa de detección 6.3
+\%). La Tabla~\ref{tbl-sens} muestra su robustez frente a la curva de
+prevalencia: el cambio entre la curva cruda y la suavizada es de cerca
+de un punto porcentual y el intervalo de incertidumbre se mantiene
+estrecho.
+
+{
+
+\begin{longtable}[]{@{}lrll@{}}
+
+\caption{\label{tbl-sens}Brecha de detección país bajo distintas curvas
+de prevalencia, con intervalo del 95\%.}
+
+\tabularnewline
+
+\toprule\noalign{}
+Fuente & Esperados 65+ & Brecha & IC 95\% \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+10\_66\_raw & 206725 & 93.7 \% & 92.7 \%--94.5 \% \\
+10\_66\_suave & 178712 & 92.7 \% & 91.6 \%--93.6 \% \\
+
+\end{longtable}
+
+}
+
+\subsection{Gradiente territorial}\label{gradiente-territorial}
+
+La detección urbana casi duplica la rural (Tabla~\ref{tbl-zona}). Lo
+rural acumula una doble desventaja: mayor prevalencia esperada y mayor
+subregistro. El análisis espacial mostró autocorrelación significativa
+con el denominador público (Moran's I = 0,23), con un conglomerado de
+mejor detección en el sur austral, encabezado por comunas sede de
+dispositivos del Plan Nacional de Demencia.
+
+{
+
+\begin{longtable}[]{@{}lll@{}}
+
+\caption{\label{tbl-zona}Brecha de detección por tipo de comuna.}
+
+\tabularnewline
+
+\toprule\noalign{}
+Zona & Tasa de detección & Brecha \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+mixto & 4.4 \% & 95.6 \% \\
+rural & 4.9 \% & 95.1 \% \\
+urbano & 8.5 \% & 91.5 \% \\
+
+\end{longtable}
+
+}
+
+\subsection{¿Dónde vive la variación del
+registro?}\label{duxf3nde-vive-la-variaciuxf3n-del-registro}
+
+La partición de la varianza es nítida (Tabla~\ref{tbl-ml}): el
+establecimiento concentra la mayor parte de la variación, con un MOR que
+indica que dos centros cualesquiera de la misma comuna difieren
+marcadamente en sus probabilidades de registrar. En el modelo
+alternativo, el Servicio de Salud pesa más que la región geográfica.
+
+{
+
+\begin{longtable}[]{@{}lrrr@{}}
+
+\caption{\label{tbl-ml}Partición de varianza del registro (modelo
+región/comuna/establecimiento).}
+
+\tabularnewline
+
+\toprule\noalign{}
+Nivel & Varianza & VPC (\%) & MOR \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+region.(Intercept) & 1.331 & 8.4 & 3.01 \\
+comuna.(Intercept) & 2.795 & 17.6 & 4.93 \\
+id.(Intercept) & 8.435 & 53.2 & 15.96 \\
+
+\end{longtable}
+
+}
+
+\subsection{Cascada de atención}\label{cascada-de-atenciuxf3n}
+
+Los registros por etapa no forman un embudo (Tabla~\ref{tbl-casc}): el
+registro de sospecha y diagnóstico es minúsculo frente al ingreso y el
+bajo control, lo que indica que el primer escalón de la ruta casi no se
+anota. Es un resultado limitante: el REM, tal como está, no permite
+reconstruir la trayectoria individual.
+
+{
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.6875}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0750}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0875}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0750}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0750}}@{}}
+
+\caption{\label{tbl-casc}Registros por etapa de la cascada (no anidan:
+lógicas y unidades distintas).}
+
+\tabularnewline
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Etapa
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+País
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Urbano
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Rural
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Mixto
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1. Sospecha (A06 consultorías) & 325 & 57 & 89 & 49 \\
+2. Diagnóstico (A06 consultorías) & 467 & 98 & 114 & 72 \\
+3. Ingreso SM (A05, flujo anual) & 15117 & 3645 & 1243 & 2390 \\
+4. Bajo control (P6, stock dic) & 14514 & 3776 & 1710 & 2065 \\
+5. Domiciliaria dep. severa c/demencia (P3, stock dic) & 23209 & 5177 &
+3009 & 4461 \\
+
+\end{longtable}
+
+}
+
+\subsection{Priorización de
+establecimientos}\label{priorizaciuxf3n-de-establecimientos}
+
+A partir del efecto aleatorio por establecimiento se priorizaron los
+2.027 centros de atención primaria activos. La Tabla~\ref{tbl-prio}
+resume la distribución por nivel de prioridad; la herramienta
+interactiva permite a cada Servicio de Salud explorar su red y exportar
+la lista accionable.
+
+{
+
+\begin{longtable}[]{@{}lr@{}}
+
+\caption{\label{tbl-prio}Distribución de establecimientos por nivel de
+prioridad de intervención.}
+
+\tabularnewline
+
+\toprule\noalign{}
+Prioridad & Establecimientos \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Alta & 338 \\
+Media & 333 \\
+Baja & 1356 \\
+
+\end{longtable}
+
+}
+
+\section{Discusión}\label{discusiuxf3n}
+
+La magnitud de la brecha es consistente con la literatura internacional
+sobre subdiagnóstico de demencia (Alzheimer's Disease International
+2021) y con el orden de magnitud del problema en países de ingreso medio
+({Llibre Rodriguez et~al.} 2008). El aporte de este trabajo no es la
+cifra global sino su \textbf{desagregación territorial} y, sobre todo,
+la \textbf{localización de la variación}: al mostrar que más de la mitad
+de la varianza del registro reside en el establecimiento ({Merlo et~al.}
+2006), el análisis reorienta la intervención desde la campaña regional
+genérica hacia la gestión centro a centro, coordinada por Servicio de
+Salud ---la unidad administrativa que el modelo alternativo identifica
+como más relevante que la región geográfica.
+
+El puntaje de priorización operacionaliza ese hallazgo. Al basarse en el
+efecto aleatorio del establecimiento, aísla el componente institucional
+---el intervenible--- del contexto comunal y regional, y lo pondera por
+el volumen de población expuesta. Coincide además con el marco de
+monitoreo oficial (Ministerio de Salud de Chile 2024), extendiéndolo a
+una resolución accionable por la gestión.
+
+La triangulación del denominador es relevante metodológicamente: muestra
+que, aunque la prevalencia proviene de una fuente única y antigua, la
+conclusión sobre la magnitud de la brecha es robusta a esa elección. La
+distorsión introducida por contabilizar a la población de seguros
+privados, en cambio, sí afectaba materialmente tanto el nivel de la
+brecha como la señal territorial, que emergió solo al usar el
+denominador público.
+
+\section{Limitaciones}\label{limitaciones}
+
+El numerador mide bajo control de salud mental, no toda la atención de
+demencia: la brecha cuantifica la visibilidad de ese subsistema, no la
+demencia sin ningún contacto con el sistema. El subregistro rural infla
+la brecha rural, de modo que parte del gradiente es falta de registro
+más que falta de detección. El denominador descansa en una encuesta de
+prevalencia por tamizaje de 2010, sensible a la escolaridad, lo que
+confunde parcialmente el exceso rural con educación; la triangulación
+atenúa pero no elimina esta limitación. El análisis es ecológico y está
+sujeto al MAUP. El desenlace del modelo multinivel es visibilidad
+administrativa, no calidad clínica. Las desagregaciones de pueblos
+originarios y migrantes son marginales independientes y se interpretan
+con cautela.
+
+\section{Conclusión}\label{conclusiuxf3n}
+
+La mayor parte de la demencia esperada en personas mayores no está bajo
+seguimiento de la salud mental pública chilena, con una desventaja rural
+marcada y una variación que reside predominantemente en el
+establecimiento. La herramienta de priorización derivada traduce este
+diagnóstico en una lista de centros a intervenir, recalculable
+periódicamente con el mismo código, como insumo para la gestión de la
+red.
+
+\section*{Declaraciones}\label{declaraciones}
+\addcontentsline{toc}{section}{Declaraciones}
+
+\textbf{Uso de inteligencia artificial.} El proyecto se desarrolló con
+asistencia de IA para programación, análisis y redacción, bajo revisión
+y decisión humanas; la responsabilidad por el contenido y las
+conclusiones es del autor. \textbf{Conflictos de interés.} El autor
+declara no tener conflictos de interés. \textbf{Disponibilidad.} Código
+y productos en el repositorio del proyecto; datos crudos disponibles en
+sus fuentes originales (DEIS, INE, FONASA, datos.gob.cl).
+
+\section*{Referencias}\label{referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+\protect\phantomsection\label{refs}
+\begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-adi2021}
+Alzheimer's Disease International. 2021. \emph{World Alzheimer Report
+2021: Journey through the diagnosis of dementia}. Alzheimer's Disease
+International.
+\url{https://www.alzint.org/resource/world-alzheimer-report-2021/}.
+
+\bibitem[\citeproctext]{ref-brooks2017}
+{Brooks, Mollie E., Kasper Kristensen, Koen J. van Benthem, et~al.}
+2017. {«glmmTMB balances speed and flexibility among packages for
+zero-inflated generalized linear mixed models»}. \emph{The R Journal} 9
+(2): 378-400. \url{https://doi.org/10.32614/RJ-2017-066}.
+
+\bibitem[\citeproctext]{ref-fuentes2014}
+Fuentes, Patricio, y Cecilia Albala. 2014. {«An update on aging and
+dementia in Chile»}. \emph{Dementia \& Neuropsychologia} 8 (4): 317-22.
+\url{https://doi.org/10.1590/S1980-57642014DN84000003}.
+
+\bibitem[\citeproctext]{ref-gbd2022}
+GBD 2019 Dementia Forecasting Collaborators. 2022. {«Estimation of the
+global prevalence of dementia in 2019 and forecasted prevalence in 2050:
+an analysis for the Global Burden of Disease Study 2019»}. \emph{The
+Lancet Public Health} 7 (2): e105-25.
+\url{https://doi.org/10.1016/S2468-2667(21)00249-8}.
+
+\bibitem[\citeproctext]{ref-goldstein2002}
+Goldstein, Harvey, William Browne, y Jon Rasbash. 2002. {«Partitioning
+variation in multilevel models»}. \emph{Understanding Statistics} 1 (4):
+223-31. \url{https://doi.org/10.1207/S15328031US0104_02}.
+
+\bibitem[\citeproctext]{ref-llibre2008}
+{Llibre Rodriguez, Juan J., Cleusa P. Ferri, Daisy Acosta, et~al.} 2008.
+{«Prevalence of dementia in Latin America, India, and China: a
+population-based cross-sectional survey»}. \emph{The Lancet} 372 (9637):
+464-74. \url{https://doi.org/10.1016/S0140-6736(08)61002-8}.
+
+\bibitem[\citeproctext]{ref-merlo2006}
+{Merlo, Juan, Basile Chaix, Henrik Ohlsson, et~al.} 2006. {«A brief
+conceptual tutorial of multilevel analysis in social epidemiology: using
+measures of clustering in multilevel logistic regression to investigate
+contextual phenomena»}. \emph{Journal of Epidemiology \& Community
+Health} 60 (4): 290-97. \url{https://doi.org/10.1136/jech.2004.029454}.
+
+\bibitem[\citeproctext]{ref-minsal2024}
+Ministerio de Salud de Chile. 2024. \emph{Mesa Asesora de Demencia:
+recomendaciones a la autoridad}. Ministerio de Salud, DIPRECE.
+\url{https://diprece.minsal.cl/}.
+
+\bibitem[\citeproctext]{ref-mood2010}
+Mood, Carina. 2010. {«Logistic regression: Why we cannot do what we
+think we can do, and what we can do about it»}. \emph{European
+Sociological Review} 26 (1): 67-82.
+\url{https://doi.org/10.1093/esr/jcp006}.
+
+\bibitem[\citeproctext]{ref-snijders2012}
+Snijders, Tom A. B., y Roel J. Bosker. 2012. \emph{Multilevel Analysis:
+An Introduction to Basic and Advanced Multilevel Modeling}. 2nd ed.
+Sage.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}
