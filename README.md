@@ -179,3 +179,25 @@ PROYECTO DEMENCIA REM/
 | 2026-06-10 | **Q5 equidad cerrada**: pobreza sin gradiente propio (Spearman −0,003; cuartil más pobre 4,7% ≈ efecto rural); pueblos originarios 2,4% del bajo control (6,7% rural) → posible subdetección | Eje territorial es la inequidad robusta; PO pendiente de denominador Censo 2024; migrante subpotenciado |
 | 2026-06-10 | **Fundamentación estadística** redactada y en PDF distribuible (4 partes, por capas para 3 públicos) | `FUNDAMENTACION_ESTADISTICA.md/.pdf`; las 4 preguntas cerradas → listo para Fase 6 dashboard |
 | 2026-06-10 | **Fase 6: dashboard Quarto** construido y renderizado OK (Resumen, Cómo leer, Glosario, Territorio con mapa leaflet, 4 preguntas, Robustez) | Lee solo de `productos/`; orden pedagógico; sitio en `docs/`. Pendiente: publicar en GitHub Pages |
+| 2026-06-25 | **Auditoría del proyecto** (ver `auditoria.md` y `plan_mejora.md`): núcleo analítico sólido; hallazgos en reproducibilidad, ética de celdas pequeñas, citación y trazabilidad | Modo evaluación con cada skill como rúbrica |
+| 2026-06-25 | **A1 verificado:** la prevalencia 10/66 está bien transcrita (Tabla 2 de Fuentes & Albala 2014); el bache 65-69→70-74 es ruido muestral de la fuente, no error | El riesgo real es el denominador de fuente única sin incertidumbre, no la transcripción |
+| 2026-06-25 | **Estado del arte** redactado (`estado_del_arte.md`, `busqueda.md`): el indicador del proyecto coincide con el indicador oficial del MINSAL (Mesa Asesora 2024) | Respalda mantener el indicador y robustecer su denominador |
+| 2026-06-25 | **Triangulación de prevalencia** añadida (`R/11_sensibilidad_prevalencia.R`): brecha bajo 10/66 raw vs suavizada vs externa (GBD), con intervalo 95% | Reporta la brecha como rango, no como punto |
+| 2026-06-25 | **Mejoras de pipeline/ética:** `run_all` falla ruidosamente; stubs `04`/`05` retirados; celdas pequeñas marcadas (`*_pub`); cifras del dashboard leídas de `productos/`; licencias y `CITATION.cff` | Cierre de hallazgos A2, A4, A5, A6, A9 del plan de mejora |
+
+---
+
+## 9. Estado del arte, auditoría y mejora
+
+- `estado_del_arte.md` — qué se sabe del problema (prevalencia y brecha), encuadre epistemológico y vacío preciso; `busqueda.md` — estrategia reproducible.
+- `auditoria.md` — evaluación por etapa y transversal con veredictos.
+- `plan_mejora.md` — acciones priorizadas por riesgo, con las líneas a correr en Positron.
+- `PASOS_POSITRON.md` — runbook para ejecutar las mejoras de esta ronda.
+
+## 10. Licencia y cómo citar
+
+Código bajo **MIT**; datos derivados y documentos bajo **CC BY 4.0**; datos crudos de terceros conservan su licencia de origen (ver `LICENSE`). Para citar el trabajo, ver `CITATION.cff`.
+
+## 11. Declaración de uso de IA
+
+Este proyecto se desarrolló con asistencia de IA (Claude) para programación, análisis y redacción, bajo revisión y decisión humanas. La responsabilidad por el contenido, las cifras y las conclusiones es del autor. La verificación de fuentes (p. ej. la prevalencia 10/66 contra el artículo original) y las decisiones metodológicas fueron validadas por una persona.

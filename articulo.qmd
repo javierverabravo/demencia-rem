@@ -1,6 +1,6 @@
 ---
-title: "Brecha de deteccion de demencia en la red publica chilena"
-subtitle: "Analisis de las Series REM 2025 (DEIS-MINSAL)"
+title: "Brecha de detección de demencia en la red pública chilena"
+subtitle: "Análisis de las Series REM 2025 (DEIS-MINSAL)"
 format:
   pdf:
     documentclass: scrartcl
@@ -10,24 +10,78 @@ format:
     number-sections: true
 ---
 
-# Introduccion
+```{r setup}
+#| include: false
+source(here::here("R", "_dashboard.R"))
+res   <- leer_prod("deteccion_resumen.csv")
+sens  <- leer_prod("sensibilidad_prevalencia.csv")
+ml    <- leer_prod("multinivel_q6.csv")
+casc  <- leer_prod("cascada.csv")
+eqp   <- leer_prod("equidad_pobreza.csv")
+pais  <- res[grupo == "PAIS"]
+```
 
-Pregunta rectora y secundarias (ver `FASE_0_INSTRUMENTO.md`). <!-- TODO Fase 6 -->
+# Introducción
 
-# Datos y metodos
+Este informe técnico resume el análisis de la detección de demencia en personas de 65 años o más en la red pública de salud chilena, a partir de las Series REM 2025 del DEIS-MINSAL. La pregunta rectora cuantifica la **brecha de detección** (cobertura registrada frente a prevalencia esperada) con desagregación territorial; las preguntas secundarias abordan la cascada de atención, la variación institucional del registro y la equidad. La explicación por capas para públicos no técnicos está en `FUNDAMENTACION_ESTADISTICA.pdf`; el encuadre y las fuentes, en `estado_del_arte.md`. Todas las cifras de este documento se generan desde `productos/`.
 
-Instrumento REM, universo demencia (crosswalk), diagnostico de celdas (Fase 1),
-panel y subregistro (Fase 3), denominadores (Fase 4), modelos (Fase 5).
-Fundamentacion completa en `FUNDAMENTACION_ESTADISTICA.md`. <!-- TODO -->
+# Datos y métodos
+
+Instrumento REM (Series A, BS, P), universo de demencia definido por crosswalk verificado (Fase 0-2), panel establecimiento × período y separación de cero estructural frente a subregistro (Fase 3). Denominador: proyecciones INE (base 2017, población 2025) por comuna y edad, multiplicadas por la prevalencia por banda etaria del estudio 10/66 Chile (Fuentes & Albala 2014), ajustada urbano/rural y escalada a la población pública por la cobertura FONASA APS 60+. El numerador es el stock bajo control de salud mental por demencia (P6, códigos `P6222300` + `P6223310`), 65+, corte de diciembre. Análisis espacial con Moran global y LISA; partición de varianza con modelo logístico multinivel (glmmTMB). Detalle formal y supuestos en la fundamentación.
 
 # Resultados
 
-<!-- TODO Fase 5: leer productos/. -->
+## Brecha de detección
+
+```{r brecha}
+knitr::kable(res[, .(Grupo = grupo, `Tasa detección` = pct(tasa_deteccion,1),
+                     Brecha = pct(brecha,1))],
+             caption = "Brecha de detección país y por zona (denominador FONASA público).")
+```
+
+A nivel país, la tasa de detección es `r pct(pais$tasa_deteccion,1)` y la brecha `r pct(pais$brecha,1)`.
+
+## Sensibilidad del denominador
+
+```{r sensibilidad}
+knitr::kable(sens[, .(Fuente = fuente, `Esperados 65+` = esperados_65,
+                      Brecha = pct(brecha_pais,1),
+                      `IC95` = paste0(pct(brecha_lo95,1), "-", pct(brecha_hi95,1)))],
+             caption = "Brecha país bajo distintas curvas de prevalencia (triangulación, con intervalo de incertidumbre).")
+```
+
+La brecha es robusta a la elección de la curva de prevalencia: el cambio entre la curva cruda y la suavizada es de aproximadamente un punto porcentual, y el intervalo de incertidumbre se mantiene estrecho. La conclusión no depende del detalle del denominador.
+
+## Variación del registro (multinivel)
+
+```{r multinivel}
+knitr::kable(ml[modelo == "region/comuna/establecimiento",
+                .(Nivel = nivel, Varianza = varianza, `VPC %` = vpc_pct, MOR)],
+             caption = "Partición de varianza de la barrera de registro (modelo región/comuna/establecimiento).")
+```
+
+El establecimiento concentra la mayor parte de la variación, lo que orienta la intervención centro a centro antes que territorial.
+
+## Cascada de atención
+
+```{r cascada}
+knitr::kable(casc[, .(Etapa = etapa, País = PAIS, Urbano = urbano,
+                      Rural = rural, Mixto = mixto)],
+             caption = "Registros por etapa (no anidan: lógicas y unidades distintas).")
+```
+
+## Equidad (eje pobreza)
+
+```{r equidad}
+knitr::kable(eqp[, .(Cuartil = cuartil_pobreza, `Tramo A medio %` = tramo_a_medio,
+                     `Tasa detección` = pct(tasa_deteccion,1), Brecha = pct(brecha,1))],
+             caption = "Brecha por cuartil de indigencia comunal (tramo A FONASA).")
+```
 
 # Limitaciones
 
-Lo que el REM no puede responder; subregistro; marginales sin cruces; eje migrante subpotenciado.
+El numerador mide bajo control de salud mental, no toda la atención de demencia: la brecha refleja la visibilidad de ese subsistema, no demencia sin ningún contacto. El subregistro rural infla la brecha rural. El denominador descansa en una encuesta de prevalencia por tamizaje de 2010 (fuente única), atenuado por la triangulación reportada. Análisis ecológico sujeto a MAUP; las desagregaciones de pueblos originarios y migrantes son marginales independientes, sin cruces, y se reportan solo agregadas. Detalle en la fundamentación, sección de caveats.
 
 # Reproducibilidad
 
-`source("R/10_run_all.R")` y luego `quarto render`.
+Entorno fijado con `renv`. Reproducción completa: `source("R/10_run_all.R")` y luego `quarto render`. Datos crudos no versionados (se obtienen del DEIS con `R/00_descarga.R`). Licencias y forma de citar en `LICENSE` y `CITATION.cff`.

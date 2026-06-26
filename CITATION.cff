@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "Si usa este trabajo o sus datos derivados, cítelo así."
+title: "Demencia en la red pública de salud · Series REM Chile"
+abstract: >-
+  Análisis reproducible de la detección, atención y carga de demencia en la red
+  pública chilena a partir de las Series REM (DEIS-MINSAL), con denominadores
+  poblacionales (INE, FONASA) y lente territorial comunal (urbano/rural, focos
+  espaciales y partición de varianza multinivel).
+type: software
+authors:
+  - given-names: Javier
+    family-names: Vera Bravo
+    email: javerab@gmail.com
+repository-code: "https://github.com/javierverabravo/demencia-rem"
+url: "https://javierverabravo.github.io/demencia-rem/"
+keywords:
+  - demencia
+  - salud pública
+  - Chile
+  - REM
+  - brecha de detección
+  - epidemiología de servicios
+license: MIT
+version: "1.0.0"
+date-released: "2026-06-25"
+references:
+  - type: article
+    authors:
+      - family-names: Fuentes
+        given-names: Patricio
+      - family-names: Albala
+        given-names: Cecilia
+    title: "An update on aging and dementia in Chile"
+    journal: "Dementia & Neuropsychologia"
+    year: 2014
+    volume: 8
+    issue: 4
+    start: 317
+    end: 322
+    notes: "Fuente de la prevalencia por banda etaria (Tabla 2) usada como denominador."

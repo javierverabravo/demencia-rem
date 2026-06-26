@@ -8,6 +8,12 @@ subtitle: "¿Cuánta demencia esperada está bajo control en la red pública?"
 source(here::here("R", "_dashboard.R"))
 res <- leer_prod("deteccion_resumen.csv"); pais <- res[grupo=="PAIS"]
 bre <- leer_prod("brecha_comuna.csv")
+# Cifras derivadas del pipeline (NO escribir a mano): numerador y denominadores pais
+num_pais <- bre[esperados > 0, sum(bajo_control_65)]
+esp_pub  <- bre[esperados > 0, round(sum(esperados))]      # denominador FONASA publico
+esp_ine  <- bre[, round(sum(esperados_ine))]               # denominador INE total
+tasa_ine <- num_pais / esp_ine
+tasa_pub <- num_pais / esp_pub
 ```
 
 ::: {.ensimple}
@@ -16,26 +22,23 @@ La demencia tiene una frecuencia conocida por edad, así que se puede estimar cu
 
 ## La cuenta, en una resta
 
-```
-Brecha = 1 − ( personas bajo control / personas esperadas )
-       = 1 − ( 13.114 / 205.843 )  ≈  93,7 %
-```
+Brecha = 1 − ( personas bajo control / personas esperadas ) = 1 − ( `r mil(num_pais)` / `r mil(esp_pub)` ) ≈ **`r pct(pais$brecha,1)`**
 
-- **Numerador:** `r mil(bre[esperados>0, sum(bajo_control_65)])` personas de 65+ bajo control SM por demencia (corte diciembre, atención primaria + especialidad).
-- **Denominador:** demencia esperada en la **población pública** (FONASA), 205.843 personas. Usar la población pública —y no la total— evita contar a quienes están en isapres y nunca usan la red pública.
+- **Numerador:** `r mil(num_pais)` personas de 65+ bajo control SM por demencia (corte diciembre, atención primaria + especialidad).
+- **Denominador:** demencia esperada en la **población pública** (FONASA), `r mil(esp_pub)` personas. Usar la población pública —y no la total— evita contar a quienes están en isapres y nunca usan la red pública.
 
 ## Por qué el denominador correcto importa
 
 ```{r denom}
 d <- data.table(
   Denominador = c("Población total (INE)", "Población pública (FONASA)"),
-  `Esperados 65+` = c(244338, 205843),
-  `Tasa detección` = c("5,4 %", "6,3 %"),
-  Brecha = c("94,6 %", "93,7 %"))
+  `Esperados 65+` = c(esp_ine, esp_pub),
+  `Tasa detección` = c(pct(tasa_ine, 1), pct(tasa_pub, 1)),
+  Brecha = c(pct(1 - tasa_ine, 1), pct(1 - tasa_pub, 1)))
 knitr::kable(d, align = "lrrr")
 ```
 
-Al limpiar el denominador no solo se corrige la cifra (de 94,6 % a 93,7 %): también se vuelve **justa** la comparación entre territorios y **emerge la señal territorial** (ver [¿Dónde vive la variación?](variacion.qmd) y [Territorio](territorio.qmd)).
+Al limpiar el denominador no solo se corrige la cifra (de `r pct(1-tasa_ine,1)` a `r pct(1-tasa_pub,1)`): también se vuelve **justa** la comparación entre territorios y **emerge la señal territorial** (ver [¿Dónde vive la variación?](variacion.qmd) y [Territorio](territorio.qmd)).
 
 ## Distribución de la detección entre comunas
 

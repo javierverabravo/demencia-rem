@@ -70,6 +70,18 @@ bre[, zona := fifelse(is.na(prop_rural), NA_character_,
                       fifelse(prop_rural >= 0.40, "rural",
                               fifelse(prop_rural <= 0.10, "urbano", "mixto")))]
 
+# --- 2b. Resguardo de celdas pequenas (A2 etica) -----------------------------
+# Tasas comunales con numerador o poblacion muy chicos son inestables y pueden
+# reidentificar. Se MARCA la celda y se deja una version ENMASCARADA (*_pub) para
+# publicar/mapear; los agregados nacionales/zona siguen usando todo el dato.
+UMBRAL_NUM <- 5L; UMBRAL_POB <- 50
+bre[, celda_pequena := bajo_control_65 < UMBRAL_NUM | pob_65mas < UMBRAL_POB]
+bre[, tasa_deteccion_pub := fifelse(celda_pequena, NA_real_, tasa_deteccion)]
+bre[, brecha_pub        := fifelse(celda_pequena, NA_real_, brecha)]
+message("Celdas pequenas (num<", UMBRAL_NUM, " o pob65+<", UMBRAL_POB, "): ",
+        bre[celda_pequena == TRUE, .N], " comunas marcadas. ",
+        "Para publicar/mapear usar tasa_deteccion_pub / brecha_pub.")
+
 # --- 3. Resumen nacional y por zona ------------------------------------------
 resumen <- bre[, .(
   comunas = .N,

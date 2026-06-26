@@ -53,7 +53,7 @@ if (is.null(g)) {
 ```
 
 ::: {.caveat}
-El calor refleja **volumen** (cuántas personas bajo control), así que naturalmente brilla donde hay más población y más centros. Para ver *qué tan bien* detecta cada centro —no solo cuántos— usa el **clic** (muestra la tasa de detección) o la tabla de abajo. La tasa por centro es un proxy: limpia para atención primaria, "s/i" para hospitales.
+El calor refleja **volumen** (cuántas personas bajo control), así que naturalmente brilla donde hay más población y más centros. Para ver *qué tan bien* detecta cada centro —no solo cuántos— usa el **clic** (muestra la tasa de detección) o la tabla de abajo. La tasa por centro es un proxy: limpia para atención primaria, "s/i" para hospitales. Por resguardo, la tasa se omite en centros con menos de 5 personas bajo control (inestable y potencialmente identificante).
 :::
 
 ## El gradiente urbano / rural
@@ -73,10 +73,13 @@ Lo rural carga doble desventaja: mayor demencia esperada **y** menor registro. R
 ```{r tabla}
 #| column: page
 if (!is.null(g) && requireNamespace("DT", quietly = TRUE)) {
+  # Resguardo de celdas pequenas (A2): la tasa con <5 personas es inestable y
+  # potencialmente identificante -> se suprime (NA) y se deja el volumen.
   tt <- g[order(-bajo_control_65)][, .(
     Comuna = comuna, Centro = nombre, Tipo = tipo,
     `Bajo control 65+` = bajo_control_65, Inscritos = inscritos_60,
-    `Detección %` = ifelse(is.na(deteccion), NA, round(100*deteccion,1)))]
+    `Detección %` = ifelse(is.na(deteccion) | bajo_control_65 < 5, NA,
+                           round(100*deteccion,1)))]
   DT::datatable(tt, rownames = FALSE, filter = "top",
                 options = list(pageLength = 12, order = list(list(3, "desc"))))
 } else {
