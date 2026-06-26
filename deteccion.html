@@ -240,11 +240,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="la-cuenta-en-una-resta" class="level2">
 <h2 class="anchored" data-anchor-id="la-cuenta-en-una-resta">La cuenta, en una resta</h2>
-<pre><code>Brecha = 1 − ( personas bajo control / personas esperadas )
-       = 1 − ( 13.114 / 205.843 )  ≈  93,7 %</code></pre>
+<p>Brecha = 1 − ( personas bajo control / personas esperadas ) = 1 − ( 13.114 / 206.926 ) ≈ <strong>93.7 %</strong></p>
 <ul>
 <li><strong>Numerador:</strong> 13.114 personas de 65+ bajo control SM por demencia (corte diciembre, atención primaria + especialidad).</li>
-<li><strong>Denominador:</strong> demencia esperada en la <strong>población pública</strong> (FONASA), 205.843 personas. Usar la población pública —y no la total— evita contar a quienes están en isapres y nunca usan la red pública.</li>
+<li><strong>Denominador:</strong> demencia esperada en la <strong>población pública</strong> (FONASA), 206.926 personas. Usar la población pública —y no la total— evita contar a quienes están en isapres y nunca usan la red pública.</li>
 </ul>
 </section>
 <section id="por-qué-el-denominador-correcto-importa" class="level2">
@@ -252,12 +251,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>ver código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Denominador =</span> <span class="fu">c</span>(<span class="st">"Población total (INE)"</span>, <span class="st">"Población pública (FONASA)"</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Esperados 65+</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">244338</span>, <span class="dv">205843</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Tasa detección</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"5,4 %"</span>, <span class="st">"6,3 %"</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Brecha =</span> <span class="fu">c</span>(<span class="st">"94,6 %"</span>, <span class="st">"93,7 %"</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(d, <span class="at">align =</span> <span class="st">"lrrr"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Denominador =</span> <span class="fu">c</span>(<span class="st">"Población total (INE)"</span>, <span class="st">"Población pública (FONASA)"</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Esperados 65+</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(esp_ine, esp_pub),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Tasa detección</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">pct</span>(tasa_ine, <span class="dv">1</span>), <span class="fu">pct</span>(tasa_pub, <span class="dv">1</span>)),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Brecha =</span> <span class="fu">c</span>(<span class="fu">pct</span>(<span class="dv">1</span> <span class="sc">-</span> tasa_ine, <span class="dv">1</span>), <span class="fu">pct</span>(<span class="dv">1</span> <span class="sc">-</span> tasa_pub, <span class="dv">1</span>)))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(d, <span class="at">align =</span> <span class="st">"lrrr"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -273,34 +272,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: left;">Población total (INE)</td>
 <td style="text-align: right;">244338</td>
-<td style="text-align: right;">5,4 %</td>
-<td style="text-align: right;">94,6 %</td>
+<td style="text-align: right;">5.4 %</td>
+<td style="text-align: right;">94.6 %</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Población pública (FONASA)</td>
-<td style="text-align: right;">205843</td>
-<td style="text-align: right;">6,3 %</td>
-<td style="text-align: right;">93,7 %</td>
+<td style="text-align: right;">206926</td>
+<td style="text-align: right;">6.3 %</td>
+<td style="text-align: right;">93.7 %</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Al limpiar el denominador no solo se corrige la cifra (de 94,6 % a 93,7 %): también se vuelve <strong>justa</strong> la comparación entre territorios y <strong>emerge la señal territorial</strong> (ver <a href="./variacion.html">¿Dónde vive la variación?</a> y <a href="./territorio.html">Territorio</a>).</p>
+<p>Al limpiar el denominador no solo se corrige la cifra (de 94.6 % a 93.7 %): también se vuelve <strong>justa</strong> la comparación entre territorios y <strong>emerge la señal territorial</strong> (ver <a href="./variacion.html">¿Dónde vive la variación?</a> y <a href="./territorio.html">Territorio</a>).</p>
 </section>
 <section id="distribución-de-la-detección-entre-comunas" class="level2">
 <h2 class="anchored" data-anchor-id="distribución-de-la-detección-entre-comunas">Distribución de la detección entre comunas</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>ver código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> bre[esperados <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> tasa_deteccion <span class="sc">&lt;=</span> <span class="fl">0.30</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(b, <span class="fu">aes</span>(tasa_deteccion)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> COL_PRIMARY, <span class="at">alpha =</span> .<span class="dv">85</span>) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pais<span class="sc">$</span>tasa_deteccion, <span class="at">color =</span> COL_ALERT, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> pais<span class="sc">$</span>tasa_deteccion, <span class="at">y =</span> <span class="cn">Inf</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.05</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"país"</span>, <span class="at">color =</span> COL_ALERT) <span class="sc">+</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tasa de detección comunal"</span>, <span class="at">y =</span> <span class="st">"Nº de comunas"</span>) <span class="sc">+</span> <span class="fu">theme_rem</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> bre[esperados <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> tasa_deteccion <span class="sc">&lt;=</span> <span class="fl">0.30</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(b, <span class="fu">aes</span>(tasa_deteccion)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> COL_PRIMARY, <span class="at">alpha =</span> .<span class="dv">85</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> pais<span class="sc">$</span>tasa_deteccion, <span class="at">color =</span> COL_ALERT, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> pais<span class="sc">$</span>tasa_deteccion, <span class="at">y =</span> <span class="cn">Inf</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.05</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"país"</span>, <span class="at">color =</span> COL_ALERT) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tasa de detección comunal"</span>, <span class="at">y =</span> <span class="st">"Nº de comunas"</span>) <span class="sc">+</span> <span class="fu">theme_rem</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
