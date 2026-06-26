@@ -135,6 +135,27 @@ Revisa que `deteccion.html` muestre la brecha y los esperados desde `productos/`
 
 ---
 
+## 4b. Probar la app de priorización (prototipo)
+
+Necesita los paquetes `shiny` y `bslib` (ya en `R/_paquetes.R`) y el insumo `productos/ranking_establecimientos.csv`, que genera `R/12_ranking_establecimientos.R` (lo corre `10_run_all.R`). Si ya corriste el pipeline, lanza la app en la **Consola**:
+
+```r
+shiny::runApp("app")
+```
+
+Se abre en el navegador. Vistas: Resumen, Priorización (ranking de centros + mapa + exportar), Ficha de centro, Territorio y Metodología. El filtro de Servicio de Salud (barra lateral) afecta a todas.
+
+Si quieres ajustar el realce rural del puntaje, regenera el ranking antes:
+
+```r
+Sys.setenv(REM_W_RURAL = "1.5")   # default 1.3
+source("R/12_ranking_establecimientos.R")
+```
+
+Si la app dice "Falta el insumo", corre `source("R/09_sintesis.R"); source("R/12_ranking_establecimientos.R")`.
+
+---
+
 ## 5. Commit de toda la ronda (A8)
 
 **Terminal:**

@@ -184,15 +184,19 @@ PROYECTO DEMENCIA REM/
 | 2026-06-25 | **Estado del arte** redactado (`estado_del_arte.md`, `busqueda.md`): el indicador del proyecto coincide con el indicador oficial del MINSAL (Mesa Asesora 2024) | Respalda mantener el indicador y robustecer su denominador |
 | 2026-06-25 | **Triangulación de prevalencia** añadida (`R/11_sensibilidad_prevalencia.R`): brecha bajo 10/66 raw vs suavizada vs externa (GBD), con intervalo 95% | Reporta la brecha como rango, no como punto |
 | 2026-06-25 | **Mejoras de pipeline/ética:** `run_all` falla ruidosamente; stubs `04`/`05` retirados; celdas pequeñas marcadas (`*_pub`); cifras del dashboard leídas de `productos/`; licencias y `CITATION.cff` | Cierre de hallazgos A2, A4, A5, A6, A9 del plan de mejora |
+| 2026-06-25 | **App de priorización (Shiny)** construida: `09` exporta efectos por establecimiento, `R/12` genera `ranking_establecimientos.csv` (2.027 centros; 338 Alta, 333 Media), app modular en `app/` | Traduce el hallazgo institucional (MOR 16) en una lista accionable de centros a intervenir, por Servicio de Salud |
+| 2026-06-25 | **Artículo científico** reproducible (`articulo_cientifico.qmd` + `referencias.bib`): métodos formales, ecuaciones, resultados desde `productos/`, bibliografía verificable | Comunicación con rigor estadístico del análisis y de la app |
 
 ---
 
-## 9. Estado del arte, auditoría y mejora
+## 9. Estado del arte, auditoría, app y publicaciones
 
 - `estado_del_arte.md` — qué se sabe del problema (prevalencia y brecha), encuadre epistemológico y vacío preciso; `busqueda.md` — estrategia reproducible.
 - `auditoria.md` — evaluación por etapa y transversal con veredictos.
 - `plan_mejora.md` — acciones priorizadas por riesgo, con las líneas a correr en Positron.
-- `PASOS_POSITRON.md` — runbook para ejecutar las mejoras de esta ronda.
+- `PASOS_POSITRON.md` — runbook para instalar, correr el pipeline, la app y publicar.
+- `diseno_app.md` — diseño de la app de priorización; `app/` — prototipo Shiny (`shiny::runApp("app")`).
+- `articulo_cientifico.qmd` (+ `referencias.bib`) — artículo científico reproducible con métodos formales; `articulo.qmd` — informe técnico breve.
 
 ## 10. Licencia y cómo citar
 

@@ -27,7 +27,10 @@ pkgs <- c(
   "DT",              # tablas interactivas
   "knitr",           # kable y motor de chunks
   "rmarkdown",       # render de .qmd con código R
-  "quarto"           # interfaz R a Quarto (el CLI se instala aparte)
+  "quarto",          # interfaz R a Quarto (el CLI se instala aparte)
+  # --- app de priorización (Shiny) ---
+  "shiny",           # app interactiva
+  "bslib"            # layout y tema de la app
 )
 
 faltan <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]

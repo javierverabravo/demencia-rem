@@ -20,7 +20,8 @@ scripts <- c(
   "11_sensibilidad_prevalencia.R", # triangulacion del denominador (A1)     [ACTIVO]
   "07_analisis_cascada.R",    # Q2 cascada                                  [ACTIVO]
   "08_analisis_equidad.R",    # Q5 equidad                                  [ACTIVO]
-  "09_sintesis.R"             # Q6 multinivel (barrera registro)            [ACTIVO]
+  "09_sintesis.R",            # Q6 multinivel (barrera registro)            [ACTIVO]
+  "12_ranking_establecimientos.R" # ranking de priorizacion (insumo app)    [ACTIVO]
 )
 # Nota: 02_datos_comunales.R, 04_engine.R y 05_indicadores.R eran stubs sin salida
 # usada (el motor comun no se implemento; la logica vive en 06-09; urbano/rural y

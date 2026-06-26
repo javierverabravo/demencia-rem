@@ -54,7 +54,7 @@ message("Filas panel (estab-mes): ", nrow(uni),
 
 # --- 2. Modelo 3 niveles: region / comuna / establecimiento ------------------
 ajustar <- function(formula, datos, etiqueta) {
-  est <- "no_convergio"; out <- NULL
+  est <- "no_convergio"; out <- NULL; mod <- NULL
   tryCatch({
     mod <- glmmTMB(formula, family = binomial, data = datos)
     conv <- mod$fit$convergence == 0 && is.finite(logLik(mod))
@@ -72,7 +72,7 @@ ajustar <- function(formula, datos, etiqueta) {
             round(100*(pi^2/3)/tot,1), "%)")
   }, error = function(e) { est <<- paste0("error: ", conditionMessage(e))
     message("  [", etiqueta, "] ", est) })
-  list(tabla = out, estado = est)
+  list(tabla = out, estado = est, modelo = mod)
 }
 
 uni[, `:=`(region = factor(region), comuna = factor(comuna), id = factor(id),
@@ -88,6 +88,20 @@ m2 <- ajustar(registro ~ 1 + (1|ss) + (1|comuna) + (1|id), uni,
 res <- rbindlist(list(m1$tabla, m2$tabla), fill = TRUE)
 if (nrow(res)) fwrite(res, file.path(PATHS$productos, "multinivel_q6.csv"))
 print(res)
+
+# --- 2b. Efecto por establecimiento (BLUP) -> insumo del ranking de la app ----
+# El intercepto aleatorio por centro mide cuanto registra de mas/menos respecto
+# de lo esperado para su comuna y region: el componente institucional puro.
+tryCatch({
+  if (!is.null(m1$modelo)) {
+    re  <- glmmTMB::ranef(m1$modelo)$cond$id
+    ref <- data.table(cod_estab = rownames(re),
+                      ef_registro = as.numeric(re[["(Intercept)"]]))
+    fwrite(ref, file.path(PATHS$productos, "ranef_establecimiento.csv"))
+    message("  efectos por establecimiento -> productos/ranef_establecimiento.csv (",
+            nrow(ref), " centros)")
+  }
+}, error = function(e) message("  [ranef] no exportado: ", conditionMessage(e)))
 
 estado <- data.table(
   analisis = c("multinivel_q6_principal", "multinivel_q6_alternativo"),
